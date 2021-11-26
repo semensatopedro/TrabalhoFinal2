@@ -1,6 +1,6 @@
 package com.example.trabalhofinal2.models;
 
-public class Cliente {
+public class Cliente extends Usuario{
 
     private String nome;
     private String email;
