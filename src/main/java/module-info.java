@@ -6,4 +6,6 @@ module com.example.trabalhofinal2 {
 
     opens com.example.trabalhofinal2 to javafx.fxml;
     exports com.example.trabalhofinal2;
+    exports com.example.trabalhofinal2.controllers;
+    opens com.example.trabalhofinal2.controllers to javafx.fxml;
 }

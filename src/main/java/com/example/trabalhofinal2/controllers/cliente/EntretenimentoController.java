@@ -1,2 +1,4 @@
-package com.example.trabalhofinal2.controllers.cliente;public class EntretenimentoController {
+package com.example.trabalhofinal2.controllers.cliente;
+
+public class EntretenimentoController {
 }

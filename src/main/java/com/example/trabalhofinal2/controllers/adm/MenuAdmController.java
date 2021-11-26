@@ -1,4 +1,4 @@
 package com.example.trabalhofinal2.controllers.adm;
 
-public class MenuAdm {
+public class MenuAdmController {
 }
