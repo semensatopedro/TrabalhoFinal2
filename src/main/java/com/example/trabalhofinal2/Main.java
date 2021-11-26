@@ -13,8 +13,8 @@ import javafx.stage.Stage;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("gui/login.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("gui/cadastraEntretenimento.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hello!");
         stage.getIcons().add(new Image(Main.class.getResourceAsStream("imagens/stonks-628x353.jpg")));
         stage.setScene(scene);

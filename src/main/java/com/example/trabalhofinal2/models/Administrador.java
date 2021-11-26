@@ -10,6 +10,7 @@ public class Administrador extends Usuario{
         super(email, senha);
     }
 
+
     public void readFile(File strFile){
 
         try (BufferedReader buffRead = new BufferedReader(new FileReader(strFile))){

@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.trabalhofinal2.controllers.adm.CadastroEntretenimentoController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trabalhofinal2.controllers.CadastroEntretenimentoController">
+   <children>
+      <ChoiceBox fx:id="myChoiceBox" layoutX="63.0" layoutY="155.0" prefWidth="150.0" />
+      <Text layoutX="63.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastre um novo" wrappingWidth="237.46337890625">
+         <font>
+            <Font name="Montserrat ExtraBold" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="63.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entretenimento" wrappingWidth="247.46337890625">
+         <font>
+            <Font name="Montserrat ExtraBold" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="64.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecione o tipo" />
+   </children>
 </AnchorPane>
