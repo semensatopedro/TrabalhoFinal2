@@ -4,17 +4,10 @@ import java.util.ArrayList;
 
 public class CatalogoEntretenimento {
 
-    private ArrayList<Entretenimento> catalogo;
-
-    public CatalogoEntretenimento() {
-        catalogo = new ArrayList<>();
-    }
-
-    public CatalogoEntretenimento(ArrayList<Entretenimento> catalogo) {
-        this.catalogo = catalogo;
-    }
+    private final static ArrayList<Entretenimento> entretenimentos = new ArrayList<>();;
 
     public ArrayList<Entretenimento> getCatalogo() {
-        return catalogo;
+        return entretenimentos;
     }
+
 }

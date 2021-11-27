@@ -9,7 +9,7 @@ public class ClienteEmpresarial extends Cliente{
     private ArrayList<Cliente> colaboradores;
 
     public ClienteEmpresarial(String nome, String email, String senha, String cnpj) {
-        super(nome, email, senha);
+        super(email,senha,nome);
         this.cnpj = cnpj;
     }
 

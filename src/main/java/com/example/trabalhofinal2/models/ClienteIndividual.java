@@ -7,7 +7,7 @@ public class ClienteIndividual extends Cliente{
     private ClienteEmpresarial empresa;
 
     public ClienteIndividual(String nome, String email, String senha, String cpf, ClienteEmpresarial empresa) {
-        super(nome, email, senha);
+        super(email,senha,nome);
         this.cpf = cpf;
         this.empresa = empresa;
     }
