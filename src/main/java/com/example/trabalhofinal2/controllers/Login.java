@@ -2,6 +2,7 @@ package com.example.trabalhofinal2.controllers;
 
 import com.example.trabalhofinal2.models.CatalogoUsuarios;
 import com.example.trabalhofinal2.models.Cliente;
+import com.example.trabalhofinal2.models.ClienteIndividual;
 import com.example.trabalhofinal2.models.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,9 +32,12 @@ public class Login {
             if(usuarios.validaSenhaUsuario(tentativaLogin)){
                 System.out.println("Senha válida");
                 tentativaLogin = usuarios.buscaUsuarioPorEmail(userField.getText());
-               if (tentativaLogin.getClass().getSuperclass().getSimpleName().equals("Cliente")){
-
-                    System.out.println("É Cliente");
+               if (tentativaLogin.defineTipo()==1){
+                   System.out.println("É Cliente Individual sem empresa");
+               } else if(tentativaLogin.defineTipo()==2){
+                   System.out.println("É Cliente Empresarial");
+               } else if(tentativaLogin.defineTipo()==3){
+                   System.out.println("É Cliente Individual com empresa");
                } else {
                     System.out.println("É Administrador");
               }

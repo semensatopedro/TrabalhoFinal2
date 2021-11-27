@@ -6,8 +6,8 @@ public class Jogo extends Entretenimento{
 
     private String genero;
 
-    public Jogo(String id, String titulo, int anoLancamento, String tituloOriginal, String genero) {
-        super(id, titulo, anoLancamento);
+    public Jogo(String codigo, String titulo, int anoLancamento, String tituloOriginal, String genero) {
+        super(codigo, titulo, anoLancamento);
         this.tituloOriginal = tituloOriginal;
         this.genero = genero;
     }
@@ -16,5 +16,13 @@ public class Jogo extends Entretenimento{
 
     public String getGenero() { return genero; }
 
-
+    @Override
+    public String toString() {
+        return getTipo() +
+                ";" + getCodigo() + ";" +
+                getTitulo() + ";" +
+                getAnoLancamento() + ";" +
+                getTituloOriginal() + ";" +
+                getGenero();
+    }
 }

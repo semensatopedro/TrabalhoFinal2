@@ -45,17 +45,25 @@ public class CatalogoUsuarios {
         }
     }
 
-    public boolean addUsuarioValido(Usuario usuario){
+    public boolean addClienteValido(Usuario usuario){
         if(usuarioDisponivel(usuario)){
             usuarios.add(usuario);
             return true;
-        }else{
+        }
             return false;
         }
 
+    public boolean addAdmValido(Administrador administrador){
+        if(usuarioDisponivel(administrador)){
+            usuarios.add(administrador);
+            return true;
+        }
+        return false;
     }
 
-
-
-
 }
+
+
+
+
+

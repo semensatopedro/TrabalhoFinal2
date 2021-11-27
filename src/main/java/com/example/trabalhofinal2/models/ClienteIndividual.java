@@ -13,6 +13,7 @@ public class ClienteIndividual extends Cliente{
         this.cpf = cpf;
         this.empresa = empresa;
         this.tipo = defineTipo();
+
     }
 
     public String getCpf() {
@@ -41,9 +42,8 @@ public class ClienteIndividual extends Cliente{
                     getCpf() +  ";" +
                     getEmpresa().getEmail();
         }
-
     }
-
+    @Override
     public int defineTipo(){
         if(this.empresa!=null){
             return 3;

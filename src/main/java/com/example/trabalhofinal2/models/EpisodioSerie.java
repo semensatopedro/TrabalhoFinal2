@@ -8,8 +8,8 @@ public class EpisodioSerie extends Entretenimento{
 
     private Serie serie;
 
-    public EpisodioSerie(String id, String titulo, int anoLancamento, int numTemporada, int numEpisodio, Serie serie) {
-        super(id, titulo, anoLancamento);
+    public EpisodioSerie(String codigo, String titulo, int anoLancamento, int numTemporada, int numEpisodio, Serie serie) {
+        super(codigo, titulo, anoLancamento);
         this.numTemporada = numTemporada;
         this.numEpisodio = numEpisodio;
         this.serie = serie;
@@ -25,5 +25,15 @@ public class EpisodioSerie extends Entretenimento{
 
     public Serie getSerie() {
         return serie;
+    }
+
+    @Override
+    public String toString() {
+        return getTipo() +
+                ";" + getCodigo() + ";" +
+                getTitulo() + ";" +
+                getAnoLancamento() + ";" +
+                getNumTemporada() + ";" +
+                getNumEpisodio();
     }
 }

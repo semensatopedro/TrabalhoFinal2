@@ -37,4 +37,8 @@ public class ClienteEmpresarial extends Cliente{
                 getCnpj() +  ";" +
                 getNomeFantasia();
     }
+
+    public int defineTipo(){
+        return 2;
+    }
 }

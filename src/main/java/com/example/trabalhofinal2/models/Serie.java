@@ -8,8 +8,8 @@ public class Serie extends Entretenimento{
 
     private ArrayList<EpisodioSerie> episodios;
 
-    public Serie(String id, String titulo, int anoLancamento, int anoConclusao) {
-        super(id, titulo, anoLancamento);
+    public Serie(String codigo, String titulo, int anoLancamento, int anoConclusao) {
+        super(codigo, titulo, anoLancamento);
         this.anoConclusao = anoConclusao;
     }
 
@@ -20,4 +20,14 @@ public class Serie extends Entretenimento{
     public ArrayList<EpisodioSerie> getEpisodios() {
         return episodios;
     }
+
+    @Override
+    public String toString() {
+        return getTipo() +
+                ";" + getCodigo() + ";" +
+                getTitulo() + ";" +
+                getAnoLancamento() + ";" +
+                getAnoConclusao();
+    }
 }
+
