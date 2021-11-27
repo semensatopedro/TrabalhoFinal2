@@ -8,7 +8,7 @@ public class ClienteEmpresarial extends Cliente{
 
     private String nomeFantasia;
 
-    private ArrayList<Cliente> colaboradores;
+    private ArrayList<ClienteIndividual> colaboradores;
 
     public ClienteEmpresarial(String nome, String email, String senha, String cnpj, String nomeFantasia) {
         super(email,senha,nome);
@@ -20,12 +20,22 @@ public class ClienteEmpresarial extends Cliente{
         return cnpj;
     }
 
-    public ArrayList<Cliente> getColaboradores() {
+    public ArrayList<ClienteIndividual> getColaboradores() {
         return colaboradores;
     }
 
     public String getNomeFantasia() {
         return nomeFantasia;
+    }
+
+    @Override
+    public double cobrancaMensal(int ano, int mes){
+        double valorInicial = super.cobrancaMensal(ano, mes);
+        for (ClienteIndividual colaborador : colaboradores) {
+            // para cada colaborador, adiciona a cobranca mensal dele
+            valorInicial += colaborador.cobrancaMensal(ano, mes);
+        }
+        return valorInicial;
     }
 
     @Override
@@ -38,6 +48,7 @@ public class ClienteEmpresarial extends Cliente{
                 getNomeFantasia();
     }
 
+    @Override
     public int defineTipo(){
         return 2;
     }

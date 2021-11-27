@@ -25,4 +25,9 @@ public class Jogo extends Entretenimento{
                 getTituloOriginal() + ";" +
                 getGenero();
     }
+
+    @Override
+    public int defineTipo(){
+        return 2;
+    }
 }

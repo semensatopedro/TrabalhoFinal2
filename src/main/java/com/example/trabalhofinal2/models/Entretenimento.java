@@ -31,17 +31,19 @@ public class Entretenimento {
         return anoLancamento;
     }
 
-    //Não dá para fazer desta forma. Precisamos identificar o tipo da forma correta.
+    // dei override nesse metodo em cada uma das subclasses, acredito que assim ele funcione
 
     public int defineTipo(){
-        if(this.getClass().getSimpleName().equals("Filme")){
-            return 1;
-        }else if(this.getClass().getSimpleName().equals("Jogo")){
-            return 2;
-        }else if(this.getClass().getSimpleName().equals("Serie")){
-            return 3;
-        }else{
-            return 4;
-        }
+        // if(this.getClass().getSimpleName().equals("Filme")){
+        //     return 1;
+        // }else if(this.getClass().getSimpleName().equals("Jogo")){
+        //     return 2;
+        // }else if(this.getClass().getSimpleName().equals("Serie")){
+        //     return 3;
+        // }else{
+        //     return 4;
+        // }
+        return 0;
     }
+    
 }

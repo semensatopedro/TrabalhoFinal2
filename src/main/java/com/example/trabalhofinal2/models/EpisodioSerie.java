@@ -36,4 +36,9 @@ public class EpisodioSerie extends Entretenimento{
                 getNumTemporada() + ";" +
                 getNumEpisodio();
     }
+
+    @Override
+    public int defineTipo(){
+        return 4;
+    }
 }

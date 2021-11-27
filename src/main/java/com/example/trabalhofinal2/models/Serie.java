@@ -29,5 +29,10 @@ public class Serie extends Entretenimento{
                 getAnoLancamento() + ";" +
                 getAnoConclusao();
     }
+
+    @Override
+    public int defineTipo(){
+        return 3;
+    }
 }
 

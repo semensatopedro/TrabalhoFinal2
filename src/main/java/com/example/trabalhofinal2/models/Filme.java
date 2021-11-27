@@ -21,5 +21,10 @@ public class Filme extends Entretenimento{
                 getAnoLancamento() + ";" +
                 getTempoDurcao();
     }
+
+    @Override
+    public int defineTipo(){
+        return 1;
+    }
 }
 
