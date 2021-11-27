@@ -32,6 +32,7 @@ public class Login {
                 System.out.println("Senha válida");
                 tentativaLogin = usuarios.buscaUsuarioPorEmail(userField.getText());
                if (tentativaLogin.getClass().getSuperclass().getSimpleName().equals("Cliente")){
+
                     System.out.println("É Cliente");
                } else {
                     System.out.println("É Administrador");

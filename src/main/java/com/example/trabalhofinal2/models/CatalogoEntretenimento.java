@@ -10,4 +10,13 @@ public class CatalogoEntretenimento {
         return entretenimentos;
     }
 
+    public boolean codigoUnico(Entretenimento entretenimento){
+        for(int i = 0; i<entretenimentos.size();i++){
+            if(entretenimentos.get(i).getCodigo().equals(entretenimento.getCodigo())){
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

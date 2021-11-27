@@ -2,20 +2,20 @@ package com.example.trabalhofinal2.models;
 
 public class Entretenimento {
 
-    private int id;
+    private String codigo;
 
     private String titulo;
 
     private int anoLancamento;
 
-    public Entretenimento(int id, String titulo, int anoLancamento) {
-        this.id = id;
+    public Entretenimento(String id, String titulo, int anoLancamento) {
+        this.codigo = id;
         this.titulo = titulo;
         this.anoLancamento = anoLancamento;
     }
 
-    public int getId() {
-        return id;
+    public String getCodigo() {
+        return codigo;
     }
 
     public String getTitulo() {
@@ -25,4 +25,5 @@ public class Entretenimento {
     public int getAnoLancamento() {
         return anoLancamento;
     }
+
 }

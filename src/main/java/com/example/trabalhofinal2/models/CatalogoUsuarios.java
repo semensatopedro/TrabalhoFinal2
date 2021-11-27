@@ -19,6 +19,15 @@ public class CatalogoUsuarios {
         return false;
     }
 
+    public Usuario buscaUsuarioPorEmail(String email){
+        for (Usuario value : usuarios) {
+            if (value.getEmail().equals(email)) {
+                return value;
+            }
+        }
+        return null;
+    }
+
     public boolean validaSenhaUsuario(Usuario usuario){
         Usuario aux = buscaUsuarioPorEmail(usuario.getEmail());
         if(aux.getSenha().equals(usuario.getSenha())){
@@ -46,14 +55,7 @@ public class CatalogoUsuarios {
 
     }
 
-    public Usuario buscaUsuarioPorEmail(String email){
-        for (Usuario value : usuarios) {
-            if (value.getEmail().equals(email)) {
-                return value;
-            }
-        }
-        return null;
-    }
+
 
 
 }

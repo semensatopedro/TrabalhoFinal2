@@ -47,10 +47,10 @@ public class Main extends Application {
     public static void inicializaCadastro(){
         CatalogoUsuarios catalogoUsuarios = new CatalogoUsuarios();
 
-        Cliente cliente1 = new ClienteEmpresarial(
-                "Coca Cola","coca@gmail.com","coca123","1234");
+        ClienteEmpresarial cliente1 = new ClienteEmpresarial(
+                "Coca Cola","coca@gmail.com","coca123","1234","Coca");
         Cliente cliente2 = new ClienteIndividual(
-                "Paulo Brito","paulo@gmail.com","brito123","111111111",null);
+                "Paulo Brito","paulo@gmail.com","brito123","111111111",cliente1);
         Cliente cliente3 = new ClienteIndividual(
                 "Paulo Brito","Ronaldo@gmail.com","brito123","111111111",null);
         Administrador adm = new Administrador("administracao@mail.com","admin123");
@@ -60,7 +60,9 @@ public class Main extends Application {
         catalogoUsuarios.addUsuarioValido(cliente3);
         catalogoUsuarios.addUsuarioValido(adm);
 
-
+        System.out.println(cliente1.toString());
+        System.out.println(cliente2.toString());
+        System.out.println(cliente3.toString());
         System.out.println(catalogoUsuarios.getUsuarios().size());
     }
 }
