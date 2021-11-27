@@ -4,7 +4,7 @@ public class Filme extends Entretenimento{
 
     private int tempoDurcao;
 
-    public Filme(int id, String titulo, int anoLancamento, int tempoDurcao) {
+    public Filme(String id, String titulo, int anoLancamento, int tempoDurcao) {
         super(id, titulo, anoLancamento);
         this.tempoDurcao = tempoDurcao;
     }
