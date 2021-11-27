@@ -6,7 +6,7 @@ public class Jogo extends Entretenimento{
 
     private String genero;
 
-    public Jogo(int id, String titulo, int anoLancamento, String tituloOriginal, String genero) {
+    public Jogo(String id, String titulo, int anoLancamento, String tituloOriginal, String genero) {
         super(id, titulo, anoLancamento);
         this.tituloOriginal = tituloOriginal;
         this.genero = genero;

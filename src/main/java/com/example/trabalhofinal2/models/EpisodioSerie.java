@@ -8,7 +8,7 @@ public class EpisodioSerie extends Entretenimento{
 
     private Serie serie;
 
-    public EpisodioSerie(int id, String titulo, int anoLancamento, int numTemporada, int numEpisodio, Serie serie) {
+    public EpisodioSerie(String id, String titulo, int anoLancamento, int numTemporada, int numEpisodio, Serie serie) {
         super(id, titulo, anoLancamento);
         this.numTemporada = numTemporada;
         this.numEpisodio = numEpisodio;
