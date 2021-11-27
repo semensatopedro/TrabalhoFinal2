@@ -27,30 +27,13 @@
          </font></Text>
       <TextArea layoutX="353.0" layoutY="54.0" prefHeight="326.0" prefWidth="217.0" />
       <TextField fx:id="idCodigo" layoutX="52.0" layoutY="202.0" prefHeight="26.0" prefWidth="150.0" text="Codigo" visible="false" />
-      <Text layoutX="53.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codigo" visible="false">
-         <font>
-            <Font name="Source Sans Pro" size="13.0" />
-         </font>
-      </Text>
       <TextField fx:id="idAnoLancamento" layoutX="221.0" layoutY="203.0" prefHeight="26.0" prefWidth="86.0" promptText="YYYY" text="Ano" visible="false" />
-      <Text layoutX="221.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ano Lcto" visible="false">
-         <font>
-            <Font name="Source Sans Pro" size="13.0" />
-         </font>
-      </Text>
-      <TextField fx:id="idTitulo" layoutX="52.0" layoutY="252.0" prefHeight="26.0" prefWidth="137.0" text="Titulo" visible="false" />
-      <Text layoutX="53.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titulo" visible="false">
-         <font>
-            <Font name="Source Sans Pro" size="13.0" />
-         </font>
-      </Text>
-      <TextField fx:id="idTituloOriginal" layoutX="52.0" layoutY="303.0" prefHeight="26.0" prefWidth="150.0" text="Titulo Original" visible="false" />
-      <Text layoutX="53.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titulo Original" visible="false">
-         <font>
-            <Font name="Source Sans Pro" size="13.0" />
-         </font>
-      </Text>
-      <TextField fx:id="idGenero" layoutX="202.0" layoutY="252.0" prefHeight="26.0" prefWidth="95.0" text="Genero" visible="false" />
+      <TextField fx:id="idTitulo" layoutX="53.0" layoutY="240.0" prefHeight="26.0" prefWidth="137.0" text="Titulo" visible="false" />
+      <TextField fx:id="idTituloOriginal" layoutX="52.0" layoutY="279.0" prefHeight="26.0" prefWidth="150.0" text="Titulo Original" visible="false" />
+      <TextField fx:id="idGenero" layoutX="203.0" layoutY="240.0" prefHeight="26.0" prefWidth="95.0" text="Genero" visible="false" />
+      <TextField fx:id="idTempoDuracao" layoutX="202.0" layoutY="240.0" prefHeight="26.0" prefWidth="95.0" text="Tempo duracao" visible="false" />
+      <TextField fx:id="idAnoConclusao" layoutX="203.0" layoutY="240.0" prefHeight="26.0" prefWidth="95.0" text="Ano conclusão" visible="false" />
+      <TextField fx:id="idNumeroTemporada" layoutX="202.0" layoutY="240.0" prefHeight="26.0" prefWidth="95.0" text="Numero temporada" visible="false" />
       <Text layoutX="202.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Genero" visible="false">
          <font>
             <Font name="Source Sans Pro" size="13.0" />
@@ -58,5 +41,11 @@
       </Text>
       <Button fx:id="cadastrar" disable="true" layoutX="52.0" layoutY="349.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="95.0" text="Cadastrar" />
       <Button layoutX="155.0" layoutY="349.0" mnemonicParsing="false" onAction="#voltar" prefHeight="26.0" prefWidth="87.0" text="Voltar" />
+      <ChoiceBox fx:id="serieChoiceBox" layoutX="217.0" layoutY="151.0" prefHeight="26.0" prefWidth="95.0" visible="false" />
+      <Text fx:id="serieText" layoutX="217.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Serie" visible="false">
+         <font>
+            <Font name="Source Sans Pro" size="13.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

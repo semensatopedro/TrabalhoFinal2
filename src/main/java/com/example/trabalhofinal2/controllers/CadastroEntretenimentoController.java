@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -49,7 +50,8 @@ public class CadastroEntretenimentoController implements Initializable{
     private ChoiceBox<String> serieChoiceBox;
     @FXML
     private Button cadastrar;
-
+    @FXML
+    private Text serieText;
 
     private String[] entretenimento = new String[]{"Jogo","Filme","Serie","Episodio"};
 
@@ -67,12 +69,42 @@ public class CadastroEntretenimentoController implements Initializable{
 
     public void carregaOpcaoEntretenimento(String newValue){
         if(newValue.equals("Jogo")){
+            limpaTela();
             idCodigo.setVisible(true);
             idAnoLancamento.setVisible(true);
             idTitulo.setVisible(true);
             idTituloOriginal.setVisible(true);
             idGenero.setVisible(true);
             cadastrar.setDisable(false);
+        }else if(newValue.equals("Filme")){
+            limpaTela();
+            idCodigo.setVisible(true);
+            idAnoLancamento.setVisible(true);
+            idTitulo.setVisible(true);
+            idTempoDuracao.setVisible(true);
+            cadastrar.setDisable(false);
+        }else if(newValue.equals("Serie")){
+            limpaTela();
+            idCodigo.setVisible(true);
+            idAnoLancamento.setVisible(true);
+            idTitulo.setVisible(true);
+            idAnoConclusao.setVisible(true);
+            cadastrar.setDisable(false);
+        }else if(newValue.equals("Episodio")){
+            limpaTela();
+            idCodigo.setVisible(true);
+            idCodigo.setDisable(true);
+            idAnoLancamento.setVisible(true);
+            idAnoLancamento.setDisable(true);
+            idTitulo.setVisible(true);
+            idTitulo.setDisable(true);
+            idNumeroTemporada.setVisible(true);
+            idNumeroTemporada.setDisable(true);
+            serieChoiceBox.setVisible(true);
+            serieText.setVisible(true);
+            cadastrar.setDisable(true);
+        }else{
+            limpaTela();
         }
     }
 
@@ -85,5 +117,19 @@ public class CadastroEntretenimentoController implements Initializable{
             stage.show();
         }catch(IOException e){
         }
+    }
+
+    public void limpaTela(){
+        idCodigo.setVisible(false);
+        idAnoLancamento.setVisible(false);
+        idTitulo.setVisible(false);
+        idTituloOriginal.setVisible(false);
+        idGenero.setVisible(false);
+        idTempoDuracao.setVisible(false);
+        idAnoConclusao.setVisible(false);
+        idNumeroTemporada.setVisible(false);
+        serieChoiceBox.setVisible(false);
+        serieText.setVisible(false);
+        cadastrar.setDisable(true);
     }
 }
