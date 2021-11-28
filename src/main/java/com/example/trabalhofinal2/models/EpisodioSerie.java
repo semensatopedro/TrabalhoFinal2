@@ -30,7 +30,8 @@ public class EpisodioSerie extends Entretenimento{
     @Override
     public String toString() {
         return getTipo() +
-                ";" + getCodigo() + ";" +
+                ";" + getSerie().getTitulo() + ";" +
+                getCodigo() + ";" +
                 getTitulo() + ";" +
                 getAnoLancamento() + ";" +
                 getNumTemporada() + ";" +

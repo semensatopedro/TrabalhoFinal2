@@ -25,5 +25,26 @@ public class CatalogoEntretenimento {
         return false;
     }
 
+    public Serie buscaSerie(String nome){
+        ArrayList<Serie> aux = new ArrayList<>();
+        for (Entretenimento value : entretenimentos) {
+            if (value.getTipo()==3) {
+                if(value.getTitulo().equals(nome))
+                    return (Serie) value;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<String> listaNomeSeries(){
+        ArrayList<String> aux = new ArrayList<>();
+        for (Entretenimento value : entretenimentos) {
+            if (value.getTipo()==3) {
+                aux.add(value.getTitulo());
+            }
+        }
+        return aux;
+    }
+
 
 }

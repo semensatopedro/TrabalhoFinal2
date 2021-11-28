@@ -59,9 +59,11 @@ public class CadastroEntretenimentoController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         myChoiceBox.getItems().addAll(entretenimento);
+        serieChoiceBox.getItems().addAll(entretenimentos.listaNomeSeries());
         myChoiceBox.getSelectionModel().selectedItemProperty().addListener(
                 (v,oldValue,newValue) -> carregaOpcaoEntretenimento(newValue));
-        //Preciso pegar todos os entretenimentos do tipo serie (Código de tipo:3)
+        serieChoiceBox.getSelectionModel().selectedItemProperty().addListener(
+                (v,oldValue,newValue) -> carregaEpisodio(entretenimentos.buscaSerie(newValue)));
 
     }
 
@@ -136,6 +138,17 @@ public class CadastroEntretenimentoController implements Initializable{
         }
     }
 
+    public void carregaEpisodio(Serie serie){
+        if(!serie.getTitulo().equals("")) {
+            idCodigo.setDisable(false);
+            idAnoLancamento.setDisable(false);
+            idTitulo.setDisable(false);
+            idNumeroTemporada.setDisable(false);
+            cadastrar.setDisable(false);
+            cadastrar.setOnAction(actionEvent -> formularioEpisodio(serie));
+        }
+    }
+
     public void carregaCena(String endereco, ActionEvent event){
         try{
             root = FXMLLoader.load(Main.class.getResource(endereco));
@@ -170,7 +183,7 @@ public class CadastroEntretenimentoController implements Initializable{
         Jogo jogo = new Jogo(codigoUsuario,tituloUsuario,anoLancamentoUsuario,tituloOriginalUsuario,generoUsuario);
 
         if(validaCadastro(jogo) && !tituloOriginalUsuario.equals("") && !generoUsuario.equals("")){
-            if(entretenimentos.codigoUnico(jogo)){
+            if(entretenimentos.addEntretenimentoValido(jogo)){
                 limpaCampos();
                 escreveMensagem(new Text("Jogo cadastrado com sucesso." + "\n" + jogo.toString()));
             }else{
@@ -191,7 +204,7 @@ public class CadastroEntretenimentoController implements Initializable{
         Filme filme = new Filme(codigoUsuario,tituloUsuario,anoLancamentoUsuario,tempoDuracaoUsuario);
 
         if(validaCadastro(filme) && tempoDuracaoUsuario!=-1){
-            if(entretenimentos.codigoUnico(filme)){
+            if(entretenimentos.addEntretenimentoValido(filme)){
                 limpaCampos();
                 escreveMensagem(new Text("Filme cadastrado com sucesso." + "\n" + filme.toString()));
             }else{
@@ -213,7 +226,7 @@ public class CadastroEntretenimentoController implements Initializable{
         Serie serie = new Serie(codigoUsuario,tituloUsuario,anoLancamentoUsuario,anoConclusaoUsuario);
 
         if(validaCadastro(serie) && anoConclusaoUsuario!=-1){
-            if(entretenimentos.codigoUnico(serie)){
+            if(entretenimentos.addEntretenimentoValido(serie)){
                 escreveMensagem(new Text("Serie cadastrado com sucesso." + "\n" + serie.toString()));
             }else{
                 escreveMensagem(new Text("Código " + serie.getCodigo() + " já existe. Cadastre outro código."));
@@ -225,26 +238,28 @@ public class CadastroEntretenimentoController implements Initializable{
         }
     }
 
-    public void formularioEpisodio(){
+    public void formularioEpisodio(Serie serie){
 
         String codigoUsuario = validaString(idCodigo);
         int anoLancamentoUsuario = validaAno(idAnoLancamento);
         String tituloUsuario = validaString(idTitulo);
-        String tituloOriginalUsuario = validaString(idTituloOriginal);
-        String generoUsuario = validaString(idGenero);
-        Jogo jogo = new Jogo(codigoUsuario,tituloUsuario,anoLancamentoUsuario,tituloOriginalUsuario,generoUsuario);
+        int numeroTemporadaUsuario = validaInteiro(idNumeroTemporada);
+        int numeroEpisodioUsuario= validaInteiro(idNumeroTemporada);
+        Serie serieUsuario = serie;
+        EpisodioSerie episodio = new EpisodioSerie(codigoUsuario,tituloUsuario,anoLancamentoUsuario,
+                numeroTemporadaUsuario,numeroEpisodioUsuario,serieUsuario);
 
-
-        if(validaCadastro(jogo)){
-            if(entretenimentos.codigoUnico(jogo)){
-                escreveMensagem(new Text("Jogo cadastrado com sucesso." + "\n" + jogo.toString()));
+        if(validaCadastro(episodio) && numeroTemporadaUsuario!=-1
+                && numeroEpisodioUsuario!=-1){
+            if(entretenimentos.addEntretenimentoValido(episodio)){
+                escreveMensagem(new Text("Episódio cadastrado com sucesso." + "\n" + episodio.toString()));
             }else{
-                escreveMensagem(new Text("Código " + jogo.getCodigo() + " já existe. Cadastre outro código."));
+                escreveMensagem(new Text("Código " + episodio.getCodigo() + " já existe. Cadastre outro código."));
                 campoInvalido(idCodigo);
                 idCodigo.clear();
             }
         } else{
-            escreveMensagem(new Text("Jogo não cadastrado. Ao menos um campo inválido"));
+            escreveMensagem(new Text("Episódio não cadastrado. Ao menos um campo inválido"));
         }
     }
 

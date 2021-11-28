@@ -77,5 +77,19 @@ public class Main extends Application {
 
         //adm.writeFile(entretenimentos, "Texto de apoio entretenimento"+"\n");
         //adm.readFile(entretenimentos);
+
+        //Valida Catálogo de Série
+        Serie serie1 = new Serie(
+                "4","Pokemon",2001,2009);
+        Serie serie2 = new Serie(
+                "5","Round6",2001,2009);
+        Serie serie3 = new Serie(
+                "6","Suits",2001,2009);
+
+        catalogoEntretenimento.addEntretenimentoValido(serie1);
+        catalogoEntretenimento.addEntretenimentoValido(serie2);
+        catalogoEntretenimento.addEntretenimentoValido(serie3);
+
+        System.out.println(catalogoEntretenimento.listaNomeSeries().toString());
     }
 }
