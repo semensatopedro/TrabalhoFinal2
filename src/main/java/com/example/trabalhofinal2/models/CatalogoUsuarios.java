@@ -83,6 +83,13 @@ public class CatalogoUsuarios {
          return aux;
      }
 
+     public ArrayList<String> listaNome(ArrayList<ClienteEmpresarial> list){
+         ArrayList<String> aux = new ArrayList<>();
+         for (ClienteEmpresarial value : list) {
+                 aux.add(value.getNome());
+             }
+         return aux;
+     }
 }
 
 
