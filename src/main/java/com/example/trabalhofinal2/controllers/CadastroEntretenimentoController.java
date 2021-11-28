@@ -1,10 +1,7 @@
 package com.example.trabalhofinal2.controllers;
 
 import com.example.trabalhofinal2.Main;
-import com.example.trabalhofinal2.models.CatalogoEntretenimento;
-import com.example.trabalhofinal2.models.Entretenimento;
-import com.example.trabalhofinal2.models.Filme;
-import com.example.trabalhofinal2.models.Jogo;
+import com.example.trabalhofinal2.models.*;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -115,7 +112,7 @@ public class CadastroEntretenimentoController implements Initializable{
             idTitulo.setVisible(true);
             idAnoConclusao.setVisible(true);
             cadastrar.setDisable(false);
-            cadastrar.setOnAction(actionEvent -> escreveMensagem(new Text("Serie")));
+            cadastrar.setOnAction(actionEvent -> formularioSerie());
 
         }else if(newValue.equals("Episodio")){
             limpaTela();
@@ -133,6 +130,7 @@ public class CadastroEntretenimentoController implements Initializable{
             serieChoiceBox.setVisible(true);
             serieText.setVisible(true);
             cadastrar.setDisable(true);
+
         }else{
             limpaTela();
         }
@@ -210,20 +208,20 @@ public class CadastroEntretenimentoController implements Initializable{
         String codigoUsuario = validaString(idCodigo);
         int anoLancamentoUsuario = validaAno(idAnoLancamento);
         String tituloUsuario = validaString(idTitulo);
-        String tituloOriginalUsuario = validaString(idTituloOriginal);
-        String generoUsuario = validaString(idGenero);
-        Jogo jogo = new Jogo(codigoUsuario,tituloUsuario,anoLancamentoUsuario,tituloOriginalUsuario,generoUsuario);
+        int anoConclusaoUsuario = validaAno(idAnoConclusao);
 
-        if(validaCadastro(jogo) && !tituloOriginalUsuario.equals("") || !generoUsuario.equals("")){
-            if(entretenimentos.codigoUnico(jogo)){
-                escreveMensagem(new Text("Jogo cadastrado com sucesso." + "\n" + jogo.toString()));
+        Serie serie = new Serie(codigoUsuario,tituloUsuario,anoLancamentoUsuario,anoConclusaoUsuario);
+
+        if(validaCadastro(serie) && anoConclusaoUsuario!=-1){
+            if(entretenimentos.codigoUnico(serie)){
+                escreveMensagem(new Text("Serie cadastrado com sucesso." + "\n" + serie.toString()));
             }else{
-                escreveMensagem(new Text("Código " + jogo.getCodigo() + " já existe. Cadastre outro código."));
+                escreveMensagem(new Text("Código " + serie.getCodigo() + " já existe. Cadastre outro código."));
                 campoInvalido(idCodigo);
                 idCodigo.clear();
             }
         }else{
-            escreveMensagem(new Text("Jogo não cadastrado. Ao menos um campo inválido"));
+            escreveMensagem(new Text("Serie não cadastrado. Ao menos um campo inválido"));
         }
     }
 
