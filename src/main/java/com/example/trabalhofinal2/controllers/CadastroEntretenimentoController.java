@@ -70,6 +70,10 @@ public class CadastroEntretenimentoController implements Initializable{
     public void carregaOpcaoEntretenimento(String newValue){
         if(newValue.equals("Jogo")){
             limpaTela();
+            idCodigo.setDisable(false);
+            idAnoLancamento.setDisable(false);
+            idTitulo.setDisable(false);
+
             idCodigo.setVisible(true);
             idAnoLancamento.setVisible(true);
             idTitulo.setVisible(true);
@@ -78,6 +82,10 @@ public class CadastroEntretenimentoController implements Initializable{
             cadastrar.setDisable(false);
         }else if(newValue.equals("Filme")){
             limpaTela();
+            idCodigo.setDisable(false);
+            idAnoLancamento.setDisable(false);
+            idTitulo.setDisable(false);
+
             idCodigo.setVisible(true);
             idAnoLancamento.setVisible(true);
             idTitulo.setVisible(true);
@@ -85,6 +93,11 @@ public class CadastroEntretenimentoController implements Initializable{
             cadastrar.setDisable(false);
         }else if(newValue.equals("Serie")){
             limpaTela();
+            idCodigo.setDisable(false);
+            idAnoLancamento.setDisable(false);
+            idTitulo.setDisable(false);
+            idAnoConclusao.setDisable(false);
+
             idCodigo.setVisible(true);
             idAnoLancamento.setVisible(true);
             idTitulo.setVisible(true);
@@ -92,14 +105,16 @@ public class CadastroEntretenimentoController implements Initializable{
             cadastrar.setDisable(false);
         }else if(newValue.equals("Episodio")){
             limpaTela();
-            idCodigo.setVisible(true);
             idCodigo.setDisable(true);
-            idAnoLancamento.setVisible(true);
             idAnoLancamento.setDisable(true);
-            idTitulo.setVisible(true);
             idTitulo.setDisable(true);
-            idNumeroTemporada.setVisible(true);
             idNumeroTemporada.setDisable(true);
+
+            idCodigo.setVisible(true);
+            idAnoLancamento.setVisible(true);
+            idTitulo.setVisible(true);
+            idNumeroTemporada.setVisible(true);
+
             serieChoiceBox.setVisible(true);
             serieText.setVisible(true);
             cadastrar.setDisable(true);
