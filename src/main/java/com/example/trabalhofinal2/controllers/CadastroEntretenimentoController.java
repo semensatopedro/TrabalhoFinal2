@@ -59,9 +59,9 @@ public class CadastroEntretenimentoController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         myChoiceBox.getItems().addAll(entretenimento);
-        serieChoiceBox.getItems().addAll(entretenimentos.listaNomeSeries());
         myChoiceBox.getSelectionModel().selectedItemProperty().addListener(
                 (v,oldValue,newValue) -> carregaOpcaoEntretenimento(newValue));
+        serieChoiceBox.getItems().addAll(entretenimentos.listaNomeSeries());
         serieChoiceBox.getSelectionModel().selectedItemProperty().addListener(
                 (v,oldValue,newValue) -> carregaEpisodio(entretenimentos.buscaSerie(newValue)));
 
@@ -119,6 +119,7 @@ public class CadastroEntretenimentoController implements Initializable{
         }else if(newValue.equals("Episodio")){
             limpaTela();
             limpaCampos();
+
             idCodigo.setDisable(true);
             idAnoLancamento.setDisable(true);
             idTitulo.setDisable(true);

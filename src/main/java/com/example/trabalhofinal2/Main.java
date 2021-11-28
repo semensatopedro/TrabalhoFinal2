@@ -34,8 +34,6 @@ public class Main extends Application {
 
         ClienteEmpresarial cliente1 = new ClienteEmpresarial(
                 "Coca Cola","coca@gmail.com","coca123","1234","Coca");
-        //ClienteEmpresarial nenhum = new ClienteEmpresarial(
-        //        "Nenhum",null,null,null,null);
         Usuario cliente2 = new ClienteIndividual(
                 "Paulo Brito","paulo@gmail.com","brito123","111111111",cliente1);
         Usuario cliente3 = new ClienteIndividual(
@@ -58,7 +56,7 @@ public class Main extends Application {
         catalogoUsuarios.addClienteValido(cliente2);
         catalogoUsuarios.addClienteValido(cliente3);
         catalogoUsuarios.addClienteValido(adm);
-        //catalogoUsuarios.addClienteValido(nenhum);
+
 
         //System.out.println(cliente1.toString());
         //System.out.println(cliente2.toString());

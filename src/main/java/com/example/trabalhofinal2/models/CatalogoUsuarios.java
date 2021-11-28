@@ -53,6 +53,15 @@ public class CatalogoUsuarios {
             return false;
         }
 
+    public ArrayList<ClienteIndividual> listaClientesIndividuais(){
+        ArrayList<ClienteIndividual> aux = new ArrayList<>();
+        for (Usuario value : usuarios) {
+            if (value.defineTipo()==3 || value.defineTipo()==1) {
+                aux.add((ClienteIndividual) value);
+            }
+        }
+        return aux;
+    }
      public ArrayList<ClienteIndividual> listaClientesIndividuaisComEmpresa(){
          ArrayList<ClienteIndividual> aux = new ArrayList<>();
          for (Usuario value : usuarios) {
@@ -83,13 +92,44 @@ public class CatalogoUsuarios {
          return aux;
      }
 
-     public ArrayList<String> listaNome(ArrayList<ClienteEmpresarial> list){
-         ArrayList<String> aux = new ArrayList<>();
-         for (ClienteEmpresarial value : list) {
-                 aux.add(value.getNome());
+     //public ArrayList<String> listaNome(ArrayList<ClienteEmpresarial> list){
+     //    ArrayList<String> aux = new ArrayList<>();
+     //    for (ClienteEmpresarial value : list) {
+     //            aux.add(value.getNome());
+     //        }
+     //    return aux;
+     //}
+
+     public boolean emailValido(String email){
+         for (Usuario value : usuarios) {
+             if (value.getEmail().equals(email)) {
+                 return false;
              }
-         return aux;
+         }
+         return true;
      }
+
+     public boolean cpfValido(String cpf){
+        ArrayList<ClienteIndividual> clientes = listaClientesIndividuais();
+        for(ClienteIndividual value : clientes){
+            if(value.getCpf().equals(cpf)){
+                return false;
+            }
+        }
+        return true;
+     }
+
+     public boolean cnpjInvalido(String cnpj){
+        ArrayList<ClienteEmpresarial> clientes = listaClientesEmpresariais();
+        for(ClienteEmpresarial value : clientes){
+            if(value.getCnpj().equals(cnpj)){
+                return false;
+            }
+        }
+        return true;
+     }
+
+
 }
 
 
