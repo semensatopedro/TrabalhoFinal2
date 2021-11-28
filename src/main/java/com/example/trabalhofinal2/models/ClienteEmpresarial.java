@@ -29,16 +29,6 @@ public class ClienteEmpresarial extends Cliente{
     }
 
     @Override
-    public double cobrancaMensal(int ano, int mes){
-        double valorInicial = super.cobrancaMensal(ano, mes);
-        for (ClienteIndividual colaborador : colaboradores) {
-            // para cada colaborador, adiciona a cobranca mensal dele
-            valorInicial += colaborador.cobrancaMensal(ano, mes);
-        }
-        return valorInicial;
-    }
-
-    @Override
     public String toString() {
         return "2" +
                 ";" + getNome() + ";" +

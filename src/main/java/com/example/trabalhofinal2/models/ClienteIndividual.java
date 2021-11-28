@@ -21,15 +21,6 @@ public class ClienteIndividual extends Cliente{
     public ClienteEmpresarial getEmpresa() {
         return empresa;
     }
-    
-    @Override
-    public double cobrancaMensal(int ano, int mes){
-        double valorInicial = super.cobrancaMensal(ano, mes);
-        if(empresa != null){
-            valorInicial *= 0.5;
-        }
-        return valorInicial;
-    }
 
     @Override
     public String toString() {
