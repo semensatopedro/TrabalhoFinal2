@@ -53,13 +53,35 @@ public class CatalogoUsuarios {
             return false;
         }
 
-    public boolean addAdmValido(Administrador administrador){
-        if(usuarioDisponivel(administrador)){
-            usuarios.add(administrador);
-            return true;
+     public ArrayList<ClienteIndividual> listaClientesIndividuaisComEmpresa(){
+         ArrayList<ClienteIndividual> aux = new ArrayList<>();
+         for (Usuario value : usuarios) {
+             if (value.defineTipo()==3) {
+                 aux.add((ClienteIndividual) value);
+             }
+         }
+         return aux;
+     }
+
+    public ArrayList<ClienteIndividual> listaClientesIndividuaisSemEmpresa(){
+        ArrayList<ClienteIndividual> aux = new ArrayList<>();
+        for (Usuario value : usuarios) {
+            if (value.defineTipo()==1) {
+                aux.add((ClienteIndividual) value);
+            }
         }
-        return false;
+        return aux;
     }
+
+     public ArrayList<ClienteEmpresarial> listaClientesEmpresariais(){
+         ArrayList<ClienteEmpresarial> aux = new ArrayList<>();
+         for (Usuario value : usuarios) {
+             if (value.defineTipo()==2) {
+                 aux.add((ClienteEmpresarial) value);
+             }
+         }
+         return aux;
+     }
 
 }
 
