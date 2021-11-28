@@ -25,7 +25,7 @@
          <font>
             <Font name="Source Sans Pro" size="13.0" />
          </font></Text>
-      <TextArea layoutX="353.0" layoutY="54.0" prefHeight="326.0" prefWidth="217.0" />
+      <TextArea fx:id="textArea" layoutX="353.0" layoutY="54.0" prefHeight="326.0" prefWidth="217.0" />
       <TextField fx:id="idCodigo" layoutX="52.0" layoutY="202.0" prefHeight="26.0" prefWidth="150.0" text="Codigo" visible="false" />
       <TextField fx:id="idAnoLancamento" layoutX="221.0" layoutY="203.0" prefHeight="26.0" prefWidth="86.0" promptText="YYYY" text="Ano" visible="false" />
       <TextField fx:id="idTitulo" layoutX="53.0" layoutY="240.0" prefHeight="26.0" prefWidth="137.0" text="Titulo" visible="false" />
