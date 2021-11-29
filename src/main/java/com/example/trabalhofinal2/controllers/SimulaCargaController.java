@@ -33,24 +33,28 @@ public class SimulaCargaController {
     private final static CatalogoUsuarios clientes = new CatalogoUsuarios();
 
     public void registra(ActionEvent event){
+        File arquivoAcessos = new File(idNomeArquivo.getText() + "-acessos.dat" );
+        File arquivoEntretenimentos = new File(idNomeArquivo.getText() + "-entretenimentos.dat" );
+        File arquivoClientes = new File(idNomeArquivo.getText() + "-clientes.dat" );
+        String conteudoAcessos = "Arquivo Acesso, teste";
+        String conteudoEntretenimentos = "Arquivo Entretenimento, teste";
+        String conteudoClientes = "Arquivo Clientes, teste";
 
+        writeFile(arquivoAcessos, conteudoAcessos);
+        writeFile(arquivoEntretenimentos, conteudoEntretenimentos);
+        writeFile(arquivoClientes, conteudoClientes);
+
+        escreveMensagem(new Text("\n"));
+        escreveMensagem(new Text("Acessos: "));
+        escreveMensagem(new Text(conteudoAcessos));
+        escreveMensagem(new Text("\n"));
+        escreveMensagem(new Text("Entretenimentos: "));
+        escreveMensagem(new Text(conteudoEntretenimentos));
+        escreveMensagem(new Text("\n"));
+        escreveMensagem(new Text("Clientes: "));
+        escreveMensagem(new Text(conteudoClientes));
     }
 
-    public void readFile(File strFile){
-
-        try (BufferedReader buffRead = new BufferedReader(new FileReader(strFile))){
-            while(buffRead.ready()){
-                String line = buffRead.readLine();
-                //ArrayList<String> valores = new ArrayList<>(List.of(line.split(";")));
-                //String aux = "Texto Auxiliar";
-                //writeFile(strFile,line);
-                System.out.println(line);
-            }
-
-        }catch (IOException e) {
-            System.out.println("Deu ruim " + e.getMessage());
-        }
-    }
 
     public void writeFile(File strFile, String strData){
 
