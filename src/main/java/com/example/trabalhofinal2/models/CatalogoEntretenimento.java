@@ -46,5 +46,46 @@ public class CatalogoEntretenimento {
         return aux;
     }
 
+    public ArrayList<Entretenimento> buscaPorTituloCompleto(String titulo){
+        ArrayList<Entretenimento> aux = new ArrayList<>();
+        for (Entretenimento value : entretenimentos) {
+            if(value.getTitulo().equals(titulo)){
+                aux.add(value);
+            }
+        }
+        return aux;
+    }
+
+    public ArrayList<Entretenimento> buscaPorTituloIncompleto(String tituloIncompleto){
+        ArrayList<Entretenimento> aux = new ArrayList<>();
+        for (Entretenimento value : entretenimentos) {
+            if(value.getTitulo().contains(tituloIncompleto)){
+                aux.add(value);
+            }
+        }
+        return aux;
+    }
+
+    public ArrayList<Entretenimento> buscaPorAnoLancamento(int anoLancamentoInicio, int anoLancamentoFinal){
+        ArrayList<Entretenimento> aux = new ArrayList<>();
+        for (Entretenimento value : entretenimentos) {
+            if(value.getAnoLancamento() > anoLancamentoInicio && value.getAnoLancamento() < anoLancamentoFinal){
+                aux.add(value);
+            }
+        }
+        return aux;
+    }
+
+    public Entretenimento buscaPorCodigo(String codigo){
+        Entretenimento aux = null;
+        for (Entretenimento value : entretenimentos) {
+            if(value.getCodigo().equals(codigo)){
+                aux = value;
+                return aux;
+            }
+        }
+        return null;
+    }
+
 
 }

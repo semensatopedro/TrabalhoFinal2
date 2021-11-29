@@ -14,7 +14,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("gui/login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("gui/catalogoEntretenimento.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hello!");
         stage.getIcons().add(new Image(Main.class.getResourceAsStream("imagens/stonks-628x353.jpg")));
@@ -46,11 +46,17 @@ public class Main extends Application {
         Entretenimento entretenimento1 = new Filme(
                 "1","StarWars",1990,123);
         Entretenimento entretenimento2 = new Jogo(
-                "2","Crash",2010,"Crash","Ação");
+                "2","Crash",2010,"Crash Biru","Ação");
         Serie entretenimento3 = new Serie(
                 "3","TheOffice",2001,2009);
         Entretenimento entretenimento4 = new EpisodioSerie(
                 "4","Episodio1",2001,2,1,entretenimento3);
+        Entretenimento entretenimento5 = new Filme(
+                "5","StarWars2",1991,123);
+        Entretenimento entretenimento6 = new Jogo(
+                "6","Crash2",2011,"Crash Bandicoot","Ação");
+        Entretenimento entretenimento7 = new Jogo(
+                "7","Avatar",2011,"Avatar","Ação");
 
 
         catalogoUsuarios.addClienteValido(cliente1);
@@ -61,7 +67,7 @@ public class Main extends Application {
 
         //System.out.println(cliente1.toString());
         //System.out.println(cliente2.toString());
-        System.out.println(catalogoUsuarios.listaClientesEmpresariais().toString());
+        // System.out.println(catalogoUsuarios.listaClientesEmpresariais().toString());
         //System.out.println(cliente3.toString());
         //System.out.println(catalogoUsuarios.getUsuarios().size());
 
@@ -82,16 +88,24 @@ public class Main extends Application {
 
         //Valida Catálogo de Série
         Serie serie1 = new Serie(
-                "4","Pokemon",2001,2009);
+                "7","Pokemon",2001,2009);
         Serie serie2 = new Serie(
-                "5","Round6",2001,2009);
+                "8","Round6",2001,2009);
         Serie serie3 = new Serie(
-                "6","Suits",2001,2009);
+                "9","Suits",2001,2009);
 
         catalogoEntretenimento.addEntretenimentoValido(serie1);
         catalogoEntretenimento.addEntretenimentoValido(serie2);
         catalogoEntretenimento.addEntretenimentoValido(serie3);
-        System.out.println(catalogoEntretenimento.listaNomeSeries().toString());
+        catalogoEntretenimento.addEntretenimentoValido(entretenimento1);
+        catalogoEntretenimento.addEntretenimentoValido(entretenimento2);
+        catalogoEntretenimento.addEntretenimentoValido(entretenimento3);
+        catalogoEntretenimento.addEntretenimentoValido(entretenimento4);
+        catalogoEntretenimento.addEntretenimentoValido(entretenimento5);
+        catalogoEntretenimento.addEntretenimentoValido(entretenimento6);
+        catalogoEntretenimento.addEntretenimentoValido(entretenimento7);
+
+        //System.out.println(catalogoEntretenimento.listaNomeSeries().toString());
 
         //Valida Acessos
         Acesso acesso1 = new Acesso((Cliente)cliente2,entretenimento2);
@@ -103,5 +117,11 @@ public class Main extends Application {
         catalogoAcesso.addAcesso(acesso3);
         catalogoAcesso.addAcesso(acesso4);
 
+        //Valida busca por apenas alguns caracteres
+        //System.out.println(catalogoEntretenimento.buscaPorTituloCompleto("StarWars").toString());
+        //catalogoEntretenimento.buscaPorTituloIncompleto("StarW");
+        //System.out.println(catalogoEntretenimento.buscaPorTituloIncompleto("Cr"));
+        //System.out.println(catalogoEntretenimento.buscaPorTituloCompleto("Crash"));
+        System.out.println(catalogoEntretenimento.buscaPorCodigo("1"));
     }
 }

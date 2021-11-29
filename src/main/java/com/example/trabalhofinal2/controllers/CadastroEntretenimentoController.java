@@ -53,12 +53,16 @@ public class CadastroEntretenimentoController implements Initializable{
     @FXML
     private TextArea textArea;
 
-    private String[] entretenimento = new String[]{"Jogo","Filme","Serie","Episodio"};
     private CatalogoEntretenimento entretenimentos = new CatalogoEntretenimento();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        myChoiceBox.getItems().addAll(entretenimento);
+        myChoiceBox.getItems().addAll(
+                "Jogo",
+                "Filme",
+                "Serie",
+                "Episodio"
+        );
         myChoiceBox.getSelectionModel().selectedItemProperty().addListener(
                 (v,oldValue,newValue) -> carregaOpcaoEntretenimento(newValue));
         serieChoiceBox.getItems().addAll(entretenimentos.listaNomeSeries());
