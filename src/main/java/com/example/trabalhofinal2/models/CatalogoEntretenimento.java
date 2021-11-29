@@ -53,6 +53,9 @@ public class CatalogoEntretenimento {
                 aux.add(value);
             }
         }
+        if(aux.size()==0){
+            return null;
+        }
         return aux;
     }
 
@@ -63,6 +66,10 @@ public class CatalogoEntretenimento {
                 aux.add(value);
             }
         }
+        if(aux.size()==0){
+            return null;
+        }
+
         return aux;
     }
 
@@ -72,6 +79,10 @@ public class CatalogoEntretenimento {
             if(value.getAnoLancamento() > anoLancamentoInicio && value.getAnoLancamento() < anoLancamentoFinal){
                 aux.add(value);
             }
+        }
+
+        if(aux.size()==0){
+            return null;
         }
         return aux;
     }

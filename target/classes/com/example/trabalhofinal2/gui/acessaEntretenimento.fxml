@@ -6,7 +6,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane onDragDetected="#voltar" prefHeight="434.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trabalhofinal2.controllers.AcessaEntretenimentoController">
    <children>
       <ListView fx:id="listView" layoutX="76.0" layoutY="44.0" prefHeight="347.0" prefWidth="224.0" />
@@ -25,14 +24,14 @@
             <Font name="Source Sans Pro" size="13.0" />
          </font>
       </Text>
-      <Button layoutX="334.0" layoutY="203.0" mnemonicParsing="false" onAction="#acessarEntretenimento" prefHeight="28.0" prefWidth="135.0" text="Confirmar Acesso">
+      <Button fx:id="confirmarAcesso" disable="true" layoutX="334.0" layoutY="203.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="135.0" text="Confirmar Acesso">
          <font>
             <Font name="Source Sans Pro" size="13.0" />
          </font>
       </Button>
-      <Text fill="#fc0000" layoutX="338.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nenhum item selecionado. " visible="false" />
-      <Text fill="#fc0000" layoutX="337.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tente novamente" visible="false" />
+      <Text fx:id="textErro1" fill="#fc0000" layoutX="338.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nenhum item selecionado. " visible="false" />
+      <Text fx:id="textErro2" fill="#fc0000" layoutX="337.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tente novamente" visible="false" />
       <Button layoutX="497.0" layoutY="355.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
-      <Text layoutX="337.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Acesso realizado com Sucesso!" />
+      <Text fx:id="textAcerto" fill="#0077c6" layoutX="337.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Acesso realizado com Sucesso!" visible="false" />
    </children>
 </AnchorPane>

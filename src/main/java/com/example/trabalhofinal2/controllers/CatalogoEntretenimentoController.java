@@ -130,23 +130,48 @@ public class CatalogoEntretenimentoController implements Initializable {
     public void formularioAnoLancamento(){
         int anoInicio = validaAno(idAnoLancamentoInicio);
         int anoFinal = validaAno(idAnoLancamentoFinal);
-        if(validaIntervaloEntreAnos(anoInicio,anoFinal)){
+
+        if(validaIntervaloEntreAnos(anoInicio,anoFinal) && validaAno(idAnoLancamentoInicio)!=-1
+        && validaAno(idAnoLancamentoFinal)!=-1){
+
             if (entretenimentos.buscaPorAnoLancamento(anoInicio,anoFinal)!=null){
                 System.out.println("Chegou aqui");
                 atualizaBusca(entretenimentos.buscaPorAnoLancamento(anoInicio,anoFinal));
                 consultar.setOnAction(actionEvent -> carregaCena("gui/acessaEntretenimento.fxml",actionEvent));
             }else{
-                escreveMensagem(new Text("Não encontramos nenhum entretenimento com este código"));
+                escreveMensagem(new Text("Não encontramos nenhum entretenimento neste intervalo"));
             }
         }else{
             escreveMensagem(new Text("Busca não realizada, o intervalo dos Anos é inválido"));
         }
     }
     public void formularioTitulo(){
-
+        String titulo = validaString(idTitulo);
+        if(!validaString(idTitulo).equals("")){
+            if (entretenimentos.buscaPorTituloCompleto(titulo)!=null){
+                System.out.println("Chegou aqui");
+                atualizaBusca(entretenimentos.buscaPorTituloCompleto(titulo));
+                consultar.setOnAction(actionEvent -> carregaCena("gui/acessaEntretenimento.fxml",actionEvent));
+            }else{
+                escreveMensagem(new Text("Não encontramos nenhum entretenimento com este título"));
+            }
+        }else{
+            escreveMensagem(new Text("Campo título inválido"));
+        }
     }
     public void formularioTituloIncompleto(){
-
+        String tituloIncompleto = validaString(idTituloIncompleto);
+        if(!validaString(idTituloIncompleto).equals("")){
+            if (entretenimentos.buscaPorTituloIncompleto(tituloIncompleto)!=null){
+                System.out.println("Chegou aqui");
+                atualizaBusca(entretenimentos.buscaPorTituloIncompleto(tituloIncompleto));
+                consultar.setOnAction(actionEvent -> carregaCena("gui/acessaEntretenimento.fxml",actionEvent));
+            }else{
+                escreveMensagem(new Text("Não encontramos nenhum entretenimento com este título"));
+            }
+        }else{
+            escreveMensagem(new Text("Campo título incompleto inválido"));
+        }
     }
 
     public boolean validaIntervaloEntreAnos(int ano1, int ano2){

@@ -1,8 +1,7 @@
 package com.example.trabalhofinal2.controllers;
 
 import com.example.trabalhofinal2.Main;
-import com.example.trabalhofinal2.models.CatalogoEntretenimento;
-import com.example.trabalhofinal2.models.Entretenimento;
+import com.example.trabalhofinal2.models.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
@@ -29,13 +29,13 @@ public class AcessaEntretenimentoController implements Initializable {
     @FXML
     private ListView<Entretenimento> listView;
     @FXML
-    private Text textErro1;
-    @FXML
-    private Text textErro2;
-    @FXML
     private Text textAcerto;
+    @FXML
+    private Button confirmarAcesso;
 
     private static final CatalogoEntretenimentoController catalogoSelecionado = new CatalogoEntretenimentoController();
+    private static final CatalogoAcesso acessos = new CatalogoAcesso();
+    private static Login login = new Login();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -58,10 +58,23 @@ public class AcessaEntretenimentoController implements Initializable {
                 return cell;
             }
         });
+        listView.getSelectionModel().selectedItemProperty().addListener(
+                (v,oldValue,newValue) -> {
+                    ativaAcesso(newValue);
+                });
     }
 
-    public void acessarEntretenimento(ActionEvent event){
-        System.out.println("Evento Acessado");
+    public void ativaAcesso(Entretenimento entretenimento){
+        System.out.println("Opção Selecionada");
+        confirmarAcesso.setDisable(false);
+        confirmarAcesso.setOnAction(actionEvent -> {
+            Acesso novoAcesso = new Acesso((Cliente)login.getUsuarioLogado(),entretenimento);
+            acessos.addAcesso(novoAcesso);
+            textAcerto.setVisible(false);
+            textAcerto.setVisible(true);
+            System.out.println("Acesso realizado: " + novoAcesso.toString());
+        });
+
     }
     public void voltar(ActionEvent event){
         carregaCena("gui/catalogoEntretenimento.fxml",event);
