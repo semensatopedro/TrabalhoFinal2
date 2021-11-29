@@ -257,6 +257,7 @@ public class CadastroEntretenimentoController implements Initializable{
                 && numeroEpisodioUsuario!=-1){
             if(entretenimentos.addEntretenimentoValido(episodio)){
                 escreveMensagem(new Text("Episódio cadastrado com sucesso." + "\n" + episodio.toString()));
+                limpaCampos();
             }else{
                 escreveMensagem(new Text("Código " + episodio.getCodigo() + " já existe. Cadastre outro código."));
                 campoInvalido(idCodigo);
@@ -350,5 +351,11 @@ public class CadastroEntretenimentoController implements Initializable{
         idTituloOriginal.setStyle(null);
         idGenero.clear();
         idGenero.setStyle(null);
+        idAnoConclusao.clear();
+        idAnoConclusao.setStyle(null);
+        idNumeroTemporada.clear();
+        idNumeroTemporada.setStyle(null);
+        idTempoDuracao.clear();
+        idTempoDuracao.setStyle(null);
     }
 }

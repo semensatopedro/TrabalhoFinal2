@@ -25,20 +25,23 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         //inicializaCadastro();
-        //launch();
         inicializaPorArquivo();
+        launch();
+
     }
 
     public static void inicializaPorArquivo(){
         CatalogoUsuarios catalogoUsuarios = new CatalogoUsuarios();
         CatalogoEntretenimento catalogoEntretenimento = new CatalogoEntretenimento();
         CatalogoAcesso catalogoAcesso = new CatalogoAcesso();
+        Administrador adm = new Administrador("administracao@mail.com","admin123");
+        catalogoUsuarios.addClienteValido(adm);
 
+        
         Arquivo arquivo = new Arquivo();
         arquivo.readFileEntretenimento(Arquivo.getArquivoEntretenimentos());
-        arquivo.readFileCliente(catalogoUsuarios.getPersistenciaClientes());
+        arquivo.readFileCliente(Arquivo.getArquivoClientes());
         arquivo.readFileAcessos(Arquivo.getArquivoAcessos());
-        //System.out.println(catalogoEntretenimento.getCatalogo().toString());
     }
 
     public static void inicializaCadastro(){
