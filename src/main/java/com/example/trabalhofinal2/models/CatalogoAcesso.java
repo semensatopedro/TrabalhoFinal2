@@ -75,9 +75,7 @@ public class CatalogoAcesso {
     public String getRelatório(ArrayList<Acesso> acessos){
         String relatorio = "";
         for (Acesso acesso : acessos) {
-            relatorio += "\n"+ acesso.getCliente().toString() + ";" +
-                    acesso.getCliente().toString() + ";" +
-                    acesso.getEntretenimento().toString() + ";";
+            relatorio += acesso.toString() + "\n";
         }
         return relatorio;
 
@@ -96,6 +94,18 @@ public class CatalogoAcesso {
             valorFinal = valorFinal + acesso.getCobranca();
         }
         return valorFinal;
+    }
+
+    public String relatorioFinalAcessos(){
+        String aux = "";
+        for (Acesso value : acessos) {
+            aux+= value.toString() + "\n";
+        }
+        if(!aux.equals("")){
+            return aux;
+        } else{
+            return null;
+        }
     }
 }
 

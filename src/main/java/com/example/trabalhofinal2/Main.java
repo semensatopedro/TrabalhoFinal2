@@ -36,27 +36,27 @@ public class Main extends Application {
         Administrador adm = new Administrador("administracao@mail.com","admin123");
 
         ClienteEmpresarial cliente1 = new ClienteEmpresarial(
-                "Coca Cola","coca@gmail.com","coca123","1234","Coca");
+                "Coca Cola","coca@gmail.com","coca123","12345678901234","Coca");
         Usuario cliente2 = new ClienteIndividual(
-                "Paulo Brito","paulo@gmail.com","brito123","111111111",cliente1);
+                "Paulo Brito","paulo@gmail.com","brito123","99999999999",cliente1);
         Usuario cliente3 = new ClienteIndividual(
-                "Ronaldo","ronaldo@gmail.com","ron123","111111111",null);
+                "Ronaldo","ronaldo@gmail.com","ron123","11111111111",null);
 
 
 
 
         Entretenimento entretenimento1 = new Filme(
-                "1","StarWars",1990,123);
+                "1","Star Wars",1990,123);
         Entretenimento entretenimento2 = new Jogo(
-                "2","Crash",2010,"Crash Biru","Ação");
+                "2","Crash",2010,"Crash Bandiccot","Ação");
         Serie entretenimento3 = new Serie(
-                "3","TheOffice",2001,2009);
+                "3","The Office",2001,2009);
         Entretenimento entretenimento4 = new EpisodioSerie(
                 "4","Episodio1",2001,2,1,entretenimento3);
         Entretenimento entretenimento5 = new Filme(
-                "5","StarWars2",1991,123);
+                "5","Star Wars 2",1991,123);
         Entretenimento entretenimento6 = new Jogo(
-                "6","Crash2",2011,"Crash Bandicoot","Ação");
+                "6","Crash 2",2011,"Crash Bandicoot 2","Ação");
         Entretenimento entretenimento7 = new Jogo(
                 "7","Avatar",2011,"Avatar","Ação");
         Serie serie1 = new Serie(

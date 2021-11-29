@@ -3,7 +3,6 @@ package com.example.trabalhofinal2.controllers;
 import com.example.trabalhofinal2.Main;
 import com.example.trabalhofinal2.models.CatalogoAcesso;
 import com.example.trabalhofinal2.models.Cliente;
-import com.example.trabalhofinal2.models.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -140,6 +139,7 @@ public class ConsultaCobrançaController {
             stage.setScene(scene);
             stage.show();
         }catch(IOException e){
+            escreveMensagem(new Text("Cena não encontrada"));
         }
     }
 }

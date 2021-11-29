@@ -1,6 +1,9 @@
 package com.example.trabalhofinal2.models;
 
-import java.time.LocalDate;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class Acesso {
 
@@ -8,14 +11,14 @@ public class Acesso {
 
     private Entretenimento entretenimento;
 
-    private LocalDate dataHora;
+    private LocalDateTime dataHora;
 
     private int cobranca;
 
     public Acesso(Cliente cliente, Entretenimento entretenimento) {
         this.cliente = cliente;
         this.entretenimento = entretenimento;
-        this.dataHora = LocalDate.now();
+        this.dataHora = LocalDateTime.now();
         this.cobranca = 0;
         if(entretenimento.defineTipo() == 1 ) this.cobranca = 6;
         else if(entretenimento.defineTipo() == 4 ) this.cobranca = 4;
@@ -48,10 +51,17 @@ public class Acesso {
         return entretenimento;
     }
 
-    public LocalDate getDataHora() {
+    public LocalDateTime getDataHora() {
         return dataHora;
     }
 
     //Validar como será o toString. Este metodo definirá como será a impressão no relatório.
-
+    @Override
+    public String toString(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy;HH:mm");
+        String data = dtf.format(getDataHora());
+        return  data + ";" +
+                cliente.getEmail() + ";" +
+                entretenimento.getCodigo();
+    }
 }

@@ -228,6 +228,7 @@ public class CadastroClienteController implements Initializable {
             stage.setScene(scene);
             stage.show();
         }catch(IOException e){
+            escreveMensagem(new Text("Cena não encontrada"));
         }
     }
 

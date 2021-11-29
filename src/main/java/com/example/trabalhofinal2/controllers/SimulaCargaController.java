@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -27,23 +28,38 @@ public class SimulaCargaController {
     private TextArea textArea;
     @FXML
     private TextField idNomeArquivo;
+    @FXML
+    private Button registra;
 
     private final static CatalogoAcesso acessos = new CatalogoAcesso();
     private final static CatalogoEntretenimento entretenimentos = new CatalogoEntretenimento();
     private final static CatalogoUsuarios clientes = new CatalogoUsuarios();
 
-    public void registra(ActionEvent event){
+    public void carregamento(Text text){
+        escreveMensagem(text);
+        aguardaCarregamento(500);
+    }
+
+    public void registra(ActionEvent event) {
         File arquivoAcessos = new File(idNomeArquivo.getText() + "-acessos.dat" );
         File arquivoEntretenimentos = new File(idNomeArquivo.getText() + "-entretenimentos.dat" );
         File arquivoClientes = new File(idNomeArquivo.getText() + "-clientes.dat" );
-        String conteudoAcessos = "Arquivo Acesso, teste";
-        String conteudoEntretenimentos = "Arquivo Entretenimento, teste";
-        String conteudoClientes = "Arquivo Clientes, teste";
+        String conteudoAcessos = acessos.relatorioFinalAcessos();
+        String conteudoEntretenimentos = entretenimentos.relatorioFinalEntretenimento();
+        String conteudoClientes = clientes.relatorioFinalClientes();
 
+        carregamento(new Text("Carregando registros de Acesso"));
         writeFile(arquivoAcessos, conteudoAcessos);
+
+        escreveMensagem(new Text("Carregando registros de Entretenimento"));
+        aguardaCarregamento(500);
         writeFile(arquivoEntretenimentos, conteudoEntretenimentos);
+
+        escreveMensagem(new Text("Carregando registros de Clientes"));
+        aguardaCarregamento(500);
         writeFile(arquivoClientes, conteudoClientes);
 
+        escreveMensagem(new Text("\n" + "Os arquivos de consulta estão disponíveis na pasta do projeto"));
         escreveMensagem(new Text("\n"));
         escreveMensagem(new Text("Acessos: "));
         escreveMensagem(new Text(conteudoAcessos));
@@ -78,10 +94,20 @@ public class SimulaCargaController {
             stage.setScene(scene);
             stage.show();
         }catch(IOException e){
+            escreveMensagem(new Text("Cena não encontrada"));
         }
     }
     public void escreveMensagem(Text mensagem){
         textArea.appendText(mensagem.getText() + "\n");
     }
+
+    public void aguardaCarregamento(int milisegundo){
+        try{
+            Thread.sleep(milisegundo);
+        }catch (InterruptedException e) {
+            escreveMensagem(new Text(e.getMessage()));
+        }
+    }
+
 
 }

@@ -1,6 +1,7 @@
 package com.example.trabalhofinal2.models;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class CatalogoUsuarios {
 
@@ -92,14 +93,6 @@ public class CatalogoUsuarios {
          return aux;
      }
 
-     //public ArrayList<String> listaNome(ArrayList<ClienteEmpresarial> list){
-     //    ArrayList<String> aux = new ArrayList<>();
-     //    for (ClienteEmpresarial value : list) {
-     //            aux.add(value.getNome());
-     //        }
-     //    return aux;
-     //}
-
      public boolean emailValido(String email){
          for (Usuario value : usuarios) {
              if (value.getEmail().equals(email)) {
@@ -129,7 +122,21 @@ public class CatalogoUsuarios {
         return true;
      }
 
+    public String relatorioFinalClientes(){
+        String aux = "";
+        for (Usuario value : usuarios) {
+            aux+= value.toString() + "\n";
+        }
+        if(!aux.equals("")){
+            return aux;
+        } else{
+            return null;
+        }
+    }
 
+    public String toString() {
+        return "\n";
+    }
 }
 
 

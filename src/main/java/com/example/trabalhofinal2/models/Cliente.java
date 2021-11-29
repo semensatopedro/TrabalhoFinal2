@@ -25,15 +25,6 @@ public class Cliente extends Usuario {
         return tipo;
     }
 
-    public ArrayList<Acesso> getAcessos(){
-        return acessos;
-    }
-
-    public boolean adicionaAcesso(Entretenimento entretenimento){
-        Acesso novoAcesso = new Acesso(this, entretenimento);
-        acessos.add(novoAcesso);
-        return true;
-    }
 
     public ArrayList<Acesso> getAcessosDaqueleMes(int ano, int mes){
         ArrayList<Acesso> resultado = new ArrayList<>();
@@ -50,7 +41,7 @@ public class Cliente extends Usuario {
         for (Acesso acesso : getAcessosDaqueleMes(ano, mes)) {
             int tipo = acesso.getEntretenimento().getTipo();
             // filme
-            if(tipo == 1 ) valorFinal += 6; 
+            if(tipo == 1 ) valorFinal += 6;
             // episodio serie
             else if(tipo == 4 ) valorFinal += 4;
             // jogo
@@ -62,5 +53,10 @@ public class Cliente extends Usuario {
     @Override
     public int defineTipo(){
         return 0;
+    }
+
+    @Override
+    public String toString(){
+        return "";
     }
 }

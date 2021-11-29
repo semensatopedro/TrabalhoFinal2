@@ -2,12 +2,10 @@ package com.example.trabalhofinal2.controllers;
 
 import com.example.trabalhofinal2.Main;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -48,6 +46,7 @@ public class MenuAdmController {
             stage.setScene(scene);
             stage.show();
         }catch(IOException e){
+            System.out.println("Cena não encontrada");
         }
     }
 
