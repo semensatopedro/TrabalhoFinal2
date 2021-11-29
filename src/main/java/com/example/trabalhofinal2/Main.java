@@ -14,7 +14,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("gui/login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("gui/consultaAcessoMensal.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hello!");
         stage.getIcons().add(new Image(Main.class.getResourceAsStream("imagens/stonks-628x353.jpg")));
@@ -31,6 +31,7 @@ public class Main extends Application {
     public static void inicializaCadastro(){
         CatalogoUsuarios catalogoUsuarios = new CatalogoUsuarios();
         CatalogoEntretenimento catalogoEntretenimento = new CatalogoEntretenimento();
+        CatalogoAcesso catalogoAcesso = new CatalogoAcesso();
 
         ClienteEmpresarial cliente1 = new ClienteEmpresarial(
                 "Coca Cola","coca@gmail.com","coca123","1234","Coca");
@@ -91,5 +92,12 @@ public class Main extends Application {
         catalogoEntretenimento.addEntretenimentoValido(serie2);
         catalogoEntretenimento.addEntretenimentoValido(serie3);
         System.out.println(catalogoEntretenimento.listaNomeSeries().toString());
+
+        //Valida Acessos
+        Acesso acesso1 = new Acesso((Cliente)cliente2,entretenimento2);
+        Acesso acesso2 = new Acesso((Cliente)cliente2,entretenimento4);
+        catalogoAcesso.addAcesso(acesso1);
+        catalogoAcesso.addAcesso(acesso2);
+
     }
 }

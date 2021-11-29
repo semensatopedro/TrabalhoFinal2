@@ -51,4 +51,7 @@ public class Acesso {
     public LocalDate getDataHora() {
         return dataHora;
     }
+
+    //Validar como será o toString. Este metodo definirá como será a impressão no relatório.
+
 }

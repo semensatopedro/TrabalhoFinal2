@@ -48,9 +48,24 @@ public class CatalogoAcesso {
                 resultado.add(acesso);
             }
         }
-        return resultado;
+
+        if(resultado.size()==0){
+            return null;
+        }else{
+            return resultado;
+        }
     }
 
+    public String getRelatório(ArrayList<Acesso> acessos){
+        String relatorio = "";
+        for (Acesso acesso : acessos) {
+            relatorio += "\n"+ acesso.getCliente().toString() + ";" +
+                    acesso.getCliente().toString() + ";" +
+                    acesso.getEntretenimento().toString() + ";";
+        }
+        return relatorio;
+
+    }
     public double cobrancaMensal(int ano, int mes){
         double valorFinal = 0;
         for (Acesso acesso : getAcessosDaqueleMes(ano, mes)) {

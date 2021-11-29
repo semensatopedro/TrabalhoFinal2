@@ -190,23 +190,23 @@ public class CadastroClienteController implements Initializable {
         String nomeFantasia = validaString(idNomeFantasia);
         ClienteEmpresarial clienteEmpresarial = new ClienteEmpresarial(email,senha,nome,cnpj,nomeFantasia);
 
-        if(validaCadastro(clienteIndividual) && !cnpj.equals("")){
+        if(validaCadastro(clienteEmpresarial) && !cnpj.equals("")){
             if(clientes.emailValido(email) && clientes.cnpjInvalido(cnpj)){
-                clientes.addClienteValido(clienteIndividual);
+                clientes.addClienteValido(clienteEmpresarial);
                 limpaCampos();
                 escreveMensagem(new Text("Cliente Empresarial cadastrado com sucesso." +
                         "\n" + clienteEmpresarial.toString()));
             }
             else{
-                escreveMensagem(new Text("Email ou CPF já existente."));
-                escreveMensagem(new Text("Cliente não cadastrado."));
+                escreveMensagem(new Text("Email ou CNPJ já existente."));
+                escreveMensagem(new Text("Cliente Empresarial não cadastrado."));
                 campoInvalido(idEmail);
                 campoInvalido(idCnpj);
                 idEmail.clear();
                 idCnpj.clear();
             }
         }else{
-            escreveMensagem(new Text("Cliente não cadastrado. Ao menos um campo inválido"));
+            escreveMensagem(new Text("Cliente Empresarial não cadastrado. Ao menos um campo inválido"));
         }
     }
 
@@ -233,7 +233,6 @@ public class CadastroClienteController implements Initializable {
 
     public String validaCPF(TextField textField){
         if(textField.getText().length()==11 && validaLong(textField)!=-1){
-
             return textField.getText();
         }else {
             campoInvalido(textField);
@@ -242,10 +241,13 @@ public class CadastroClienteController implements Initializable {
     }
 
     public String validaCNPJ(TextField textField){
-        if(textField.toString().length()==14 && validaLong(textField)!=-1){
+        if(textField.getText().length()==14 && validaLong(textField)!=-1){
             return textField.toString();
+        }else{
+            campoInvalido(textField);
+            return "";
         }
-        return "";
+
     }
 
     public long validaLong(TextField textField){
@@ -289,6 +291,7 @@ public class CadastroClienteController implements Initializable {
         idNome.setVisible(false);
         idCpf.setVisible(false);
         idCnpj.setVisible(false);
+        idNomeFantasia.setVisible(false);
         empresaChoiceBox.setVisible(false);
         cadastrar.setDisable(true);
     }
@@ -304,6 +307,8 @@ public class CadastroClienteController implements Initializable {
         idCpf.setStyle(null);
         idCnpj.clear();
         idCnpj.setStyle(null);
+        idNomeFantasia.clear();
+        idNomeFantasia.setStyle(null);
     }
 
     public void escreveMensagem(Text mensagem){
