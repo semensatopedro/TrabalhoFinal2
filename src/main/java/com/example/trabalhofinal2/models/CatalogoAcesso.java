@@ -82,9 +82,17 @@ public class CatalogoAcesso {
         return relatorio;
 
     }
-    public double cobrancaMensal(int ano, int mes){
+    public double cobrancaMensalGeral(int ano, int mes){
         double valorFinal = 0;
         for (Acesso acesso : getAcessosDaqueleMesGeral(ano, mes)) {
+            valorFinal = valorFinal + acesso.getCobranca();
+        }
+        return valorFinal;
+    }
+
+    public double cobrancaMensalCliente(int ano, int mes, ArrayList<Acesso> acessosCliente, Cliente cliente){
+        double valorFinal = 0;
+        for (Acesso acesso : getAcessosDaqueleMesCliente(acessosCliente,cliente)) {
             valorFinal = valorFinal + acesso.getCobranca();
         }
         return valorFinal;

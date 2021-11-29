@@ -38,6 +38,8 @@ public class ConsultaAcessoController {
             if(acessos.getAcessosDaqueleMesGeral(ano,mes)!=null){
                 limpaCampos();
                 escreveMensagem(new Text(acessos.getRelatório(acessos.getAcessosDaqueleMesGeral(ano,mes))));
+                escreveMensagem(new Text("O Valor total na competência " + mes + "/" + ano + " é de R$" +
+                acessos.cobrancaMensalGeral(ano,mes) + ";"));
             }else{
                 //Período vazio, nenhum acesso realizado.
                 limpaCampos();

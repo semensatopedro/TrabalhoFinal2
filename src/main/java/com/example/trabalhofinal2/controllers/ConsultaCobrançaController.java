@@ -45,9 +45,11 @@ public class ConsultaCobrançaController {
                     acessos.getAcessosDaqueleMesGeral(ano,mes),clienteLogado)!=null){
 
                 limpaCampos();
-                System.out.println(clienteLogado.getEmail());
                 escreveMensagem(new Text(acessos.getRelatório(acessos.getAcessosDaqueleMesCliente(
                         acessos.getAcessosDaqueleMesGeral(ano,mes),clienteLogado))));
+                escreveMensagem(new Text("O Valor total na competência " + mes + "/" + ano + " é de R$" +
+                acessos.cobrancaMensalCliente(ano,mes, acessos.getAcessosDaqueleMesCliente(
+                        acessos.getAcessosDaqueleMesGeral(ano,mes),clienteLogado), clienteLogado)+ ";"));
 
             }else{
                 //Período vazio, nenhum acesso realizado.
