@@ -35,6 +35,6 @@
       <ChoiceBox fx:id="empresaChoiceBox" layoutX="63.0" layoutY="290.0" prefHeight="26.0" prefWidth="118.0" value="Nenhum" visible="false" />
       <TextField fx:id="idNome" layoutX="63.0" layoutY="248.0" prefHeight="26.0" prefWidth="150.0" promptText="Nome" visible="false" />
       <TextField fx:id="idCnpj" layoutX="224.0" layoutY="249.0" prefHeight="26.0" prefWidth="118.0" promptText="CNPJ" visible="false" />
-      <TextField fx:id="idNomeFantasia" layoutX="58.0" layoutY="291.0" promptText="Nome Fantasia" visible="false" />
+      <TextField fx:id="idNomeFantasia" layoutX="63.0" layoutY="287.0" promptText="Nome Fantasia" visible="false" />
    </children>
 </AnchorPane>

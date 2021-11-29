@@ -9,33 +9,33 @@
 
 <AnchorPane prefHeight="434.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trabalhofinal2.controllers.ConsultaAcessoController">
    <children>
-      <Text layoutX="62.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Consulte" wrappingWidth="237.46337890625">
+      <Text layoutX="45.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Consulte" wrappingWidth="237.46337890625">
          <font>
             <Font name="Montserrat ExtraBold" size="22.0" />
          </font>
       </Text>
-      <Text layoutX="62.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="os Acessos" wrappingWidth="247.46337890625">
+      <Text layoutX="45.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="os Acessos" wrappingWidth="247.46337890625">
          <font>
             <Font name="Montserrat ExtraBold" size="22.0" />
          </font>
       </Text>
-      <Text layoutX="229.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecione o período:">
+      <Text layoutX="212.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecione o período:">
          <font>
             <Font name="Source Sans Pro" size="13.0" />
          </font>
       </Text>
-      <TextArea fx:id="textArea" layoutX="58.0" layoutY="126.0" prefHeight="252.0" prefWidth="522.0" />
-      <Button fx:id="consulta" layoutX="438.0" layoutY="74.0" mnemonicParsing="false" onAction="#consultaAcessos" prefHeight="26.0" prefWidth="95.0" text="Consultar">
+      <TextArea fx:id="textArea" layoutX="41.0" layoutY="112.0" prefHeight="252.0" prefWidth="522.0" />
+      <Button fx:id="consulta" layoutX="421.0" layoutY="60.0" mnemonicParsing="false" onAction="#consultaAcessos" prefHeight="26.0" prefWidth="95.0" text="Consultar">
          <font>
             <Font name="Source Sans Pro" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="498.0" layoutY="386.0" mnemonicParsing="false" onAction="#voltar" prefHeight="28.0" prefWidth="69.0" text="Voltar">
+      <Button layoutX="491.0" layoutY="376.0" mnemonicParsing="false" onAction="#voltar" prefHeight="28.0" prefWidth="69.0" text="Voltar">
          <font>
             <Font name="Source Sans Pro" size="13.0" />
          </font>
       </Button>
-      <TextField fx:id="idAno" layoutX="229.0" layoutY="75.0" prefHeight="26.0" prefWidth="95.0" promptText="Ano (YYYY)" />
-      <TextField fx:id="idMes" layoutX="338.0" layoutY="75.0" prefHeight="26.0" prefWidth="76.0" promptText="Mes (MM)" />
+      <TextField fx:id="idAno" layoutX="212.0" layoutY="61.0" prefHeight="26.0" prefWidth="95.0" promptText="Ano (YYYY)" />
+      <TextField fx:id="idMes" layoutX="321.0" layoutY="61.0" prefHeight="26.0" prefWidth="76.0" promptText="Mes (MM)" />
    </children>
 </AnchorPane>

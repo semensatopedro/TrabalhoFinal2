@@ -32,7 +32,8 @@ public class MenuAdmController {
     }
 
     public void acessaSimulaCarregamento(ActionEvent event){
-        carregaCena("gui/SimulaCargaDeDados.fxml",event);
+        System.out.println("Recenheceu clique");
+        carregaCena("gui/simulaCargaDeDados.fxml",event);
     }
 
     public void logout(ActionEvent event){
