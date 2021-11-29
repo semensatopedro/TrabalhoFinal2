@@ -1,6 +1,5 @@
 package com.example.trabalhofinal2.models;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class CatalogoAcesso {
@@ -41,18 +40,35 @@ public class CatalogoAcesso {
         return false;
     }
 
-    public ArrayList<Acesso> getAcessosDaqueleMes(int ano, int mes){
-        ArrayList<Acesso> resultado = new ArrayList<>();
+    public ArrayList<Acesso> getAcessosDaqueleMesGeral(int ano, int mes){
+        ArrayList<Acesso> resultadoGeral = new ArrayList<>();
         for (Acesso acesso : acessos) {
             if(acesso.getDataHora().getYear() == ano && acesso.getDataHora().getMonth().getValue() == mes){
-                resultado.add(acesso);
+                resultadoGeral.add(acesso);
             }
         }
 
-        if(resultado.size()==0){
+        if(resultadoGeral.size()==0){
             return null;
         }else{
-            return resultado;
+            return resultadoGeral;
+        }
+    }
+
+    public ArrayList<Acesso> getAcessosDaqueleMesCliente(ArrayList<Acesso> resultadoGeral, Cliente cliente){
+        ArrayList<Acesso> resultadoCliente = new ArrayList<>();
+        if(resultadoGeral!=null && cliente!=null){
+            for (Acesso acesso : resultadoGeral) {
+                if(acesso.getCliente().equals(cliente)){
+                    resultadoCliente.add(acesso);
+                }
+            }
+        }
+
+        if(resultadoCliente.size()==0){
+            return null;
+        }else{
+            return resultadoCliente;
         }
     }
 
@@ -68,7 +84,7 @@ public class CatalogoAcesso {
     }
     public double cobrancaMensal(int ano, int mes){
         double valorFinal = 0;
-        for (Acesso acesso : getAcessosDaqueleMes(ano, mes)) {
+        for (Acesso acesso : getAcessosDaqueleMesGeral(ano, mes)) {
             valorFinal = valorFinal + acesso.getCobranca();
         }
         return valorFinal;

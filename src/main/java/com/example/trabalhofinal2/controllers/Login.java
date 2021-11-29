@@ -39,7 +39,8 @@ public class Login {
     @FXML
     private Text idSenhaInvalida;
 
-    private CatalogoUsuarios usuarios = new CatalogoUsuarios();
+    private static CatalogoUsuarios usuarios = new CatalogoUsuarios();
+    private static Usuario usuarioLogado = null;
 
     public void realizarLogin(ActionEvent event){
 
@@ -49,9 +50,9 @@ public class Login {
             //Usuário encontrado
             if(usuarios.validaSenhaUsuario(tentativaLogin)){
                 //Senha Válida
-                tentativaLogin = usuarios.buscaUsuarioPorEmail(userField.getText());
-               if (tentativaLogin.defineTipo()==1 || tentativaLogin.defineTipo()==2 ||
-                       tentativaLogin.defineTipo()==3){
+                atualizaUsuarioLogado();
+               if (usuarioLogado.defineTipo()==1 || usuarioLogado.defineTipo()==2 ||
+                       usuarioLogado.defineTipo()==3){
                    //É Cliente
                    idSenhaInvalida.setVisible(false);
                    idUsuarioErro.setVisible(false);
@@ -95,6 +96,10 @@ public class Login {
         textField.clear();
     }
 
+    public Usuario getUsuarioLogado(){
+        return usuarioLogado;
+    }
+
     public void carregaCena(String endereco, ActionEvent event){
         try{
             root = FXMLLoader.load(Main.class.getResource(endereco));
@@ -104,5 +109,9 @@ public class Login {
             stage.show();
         }catch(IOException e){
         }
+    }
+
+    public void atualizaUsuarioLogado(){
+        usuarioLogado = usuarios.buscaUsuarioPorEmail(userField.getText());
     }
 }

@@ -1,7 +1,6 @@
 package com.example.trabalhofinal2.controllers;
 
 import com.example.trabalhofinal2.Main;
-import com.example.trabalhofinal2.models.Acesso;
 import com.example.trabalhofinal2.models.CatalogoAcesso;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,14 +8,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class ConsultaAcessoController {
 
@@ -24,8 +21,6 @@ public class ConsultaAcessoController {
     private Scene scene;
     private Parent root;
 
-    @FXML
-    private Button consulta;
     @FXML
     private TextArea textArea;
     @FXML
@@ -40,16 +35,17 @@ public class ConsultaAcessoController {
         int mes = validaMes(idMes);
 
         if(ano!=-1 && mes!=-1){
-            if(acessos.getAcessosDaqueleMes(ano,mes)!=null){
-                escreveMensagem(new Text(acessos.getRelatório(acessos.getAcessosDaqueleMes(ano,mes))));
+            if(acessos.getAcessosDaqueleMesGeral(ano,mes)!=null){
+                limpaCampos();
+                escreveMensagem(new Text(acessos.getRelatório(acessos.getAcessosDaqueleMesGeral(ano,mes))));
             }else{
                 //Período vazio, nenhum acesso realizado.
+                limpaCampos();
                 escreveMensagem(new Text("Nenhum acesso computado neste período"));
             }
         }else{
             escreveMensagem(new Text("O Relatório não foi gerado. Valide os campos preenchidos"));
         }
-        System.out.println("Consultado");
     }
 
     public void voltar(ActionEvent event){
@@ -102,6 +98,13 @@ public class ConsultaAcessoController {
                 "-fx-control-inner-background: #FFEFEF;" +
                         "-fx-border-color: #FFA3A3");
         textField.clear();
+    }
+
+    public void limpaCampos(){
+        idAno.setStyle(null);
+        idAno.clear();
+        idMes.setStyle(null);
+        idMes.clear();
     }
 
     public void escreveMensagem(Text mensagem){

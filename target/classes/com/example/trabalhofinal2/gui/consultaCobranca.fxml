@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.trabalhofinal2.controllers.ConsultaCobrançaController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="434.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trabalhofinal2.controllers.ConsultaCobrançaController">
+   <children>
+      <Text layoutX="43.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Consulte" wrappingWidth="237.46337890625">
+         <font>
+            <Font name="Montserrat ExtraBold" size="22.0" />
+         </font>
+      </Text>
+      <Text layoutX="43.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="seu Consumo" wrappingWidth="247.46337890625">
+         <font>
+            <Font name="Montserrat ExtraBold" size="22.0" />
+         </font>
+      </Text>
+      <Text layoutX="220.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecione o período:">
+         <font>
+            <Font name="Source Sans Pro" size="13.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="textArea" layoutX="39.0" layoutY="115.0" prefHeight="252.0" prefWidth="522.0" />
+      <Button fx:id="consulta" layoutX="429.0" layoutY="67.0" mnemonicParsing="false" onAction="#consultaCobranca" prefHeight="26.0" prefWidth="95.0" text="Consultar">
+         <font>
+            <Font name="Source Sans Pro" size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="489.0" layoutY="379.0" mnemonicParsing="false" onAction="#voltar" prefHeight="28.0" prefWidth="69.0" text="Voltar">
+         <font>
+            <Font name="Source Sans Pro" size="13.0" />
+         </font>
+      </Button>
+      <TextField fx:id="idAno" layoutX="220.0" layoutY="68.0" prefHeight="26.0" prefWidth="95.0" promptText="Ano (YYYY)" />
+      <TextField fx:id="idMes" layoutX="329.0" layoutY="68.0" prefHeight="26.0" prefWidth="76.0" promptText="Mes (MM)" />
+   </children>
 </AnchorPane>

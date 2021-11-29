@@ -38,7 +38,7 @@ public class Main extends Application {
         Usuario cliente2 = new ClienteIndividual(
                 "Paulo Brito","paulo@gmail.com","brito123","111111111",cliente1);
         Usuario cliente3 = new ClienteIndividual(
-                "Paulo Brito","Ronaldo@gmail.com","brito123","111111111",null);
+                "Ronaldo","ronaldo@gmail.com","ron123","111111111",null);
         Administrador adm = new Administrador("administracao@mail.com","admin123");
 
 
@@ -96,8 +96,12 @@ public class Main extends Application {
         //Valida Acessos
         Acesso acesso1 = new Acesso((Cliente)cliente2,entretenimento2);
         Acesso acesso2 = new Acesso((Cliente)cliente2,entretenimento4);
+        Acesso acesso3 = new Acesso((Cliente)cliente3,entretenimento2);
+        Acesso acesso4 = new Acesso((Cliente)cliente3,entretenimento2);
         catalogoAcesso.addAcesso(acesso1);
         catalogoAcesso.addAcesso(acesso2);
+        catalogoAcesso.addAcesso(acesso3);
+        catalogoAcesso.addAcesso(acesso4);
 
     }
 }
