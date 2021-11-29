@@ -1,10 +1,14 @@
 package com.example.trabalhofinal2.models;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class CatalogoAcesso {
 
     private final static ArrayList<Acesso> acessos = new ArrayList<>();
+    private final static Arquivo arquivo = new Arquivo();
+    private static File persistenciaAcessos= new File(
+            "src/main/resources/com/example/trabalhofinal2/arquivos/persistencia-acessos.dat");
 
     public ArrayList<Acesso> getCatalogo() { return acessos; }
 
@@ -31,10 +35,12 @@ public class CatalogoAcesso {
 
             acessos.add(acesso);
             acessos.add(acessoEmpresa);
-
+            arquivo.writeFile(persistenciaAcessos,acesso.toString()+ "\n");
+            arquivo.writeFile(persistenciaAcessos,acessoEmpresa.toString()+ "\n");
             return true;
         } else if (acesso.getCliente().defineTipo() == 2 || acesso.getCliente().defineTipo() == 1){
             acessos.add(acesso);
+            arquivo.writeFile(persistenciaAcessos,acesso.toString()+ "\n");
             return true;
         }
         return false;
@@ -99,13 +105,17 @@ public class CatalogoAcesso {
     public String relatorioFinalAcessos(){
         String aux = "";
         for (Acesso value : acessos) {
-            aux+= value.toString() + "\n";
+            aux+= "Cadastrado Acesso: " + value.toString() + "\n";
         }
         if(!aux.equals("")){
             return aux;
         } else{
             return null;
         }
+    }
+
+    public  File getPersistenciaAcessos() {
+        return persistenciaAcessos;
     }
 }
 

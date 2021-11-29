@@ -1,11 +1,15 @@
 package com.example.trabalhofinal2.models;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class CatalogoUsuarios {
 
     private final static ArrayList<Usuario> usuarios = new ArrayList<>();
+    private static Arquivo arquivo = new Arquivo();
+    private static File persistenciaClientes = new File(
+            "src/main/resources/com/example/trabalhofinal2/arquivos/persistencia-clientes.dat");
 
     public ArrayList<Usuario> getUsuarios() {
         return usuarios;
@@ -49,6 +53,7 @@ public class CatalogoUsuarios {
     public boolean addClienteValido(Usuario usuario){
         if(usuarioDisponivel(usuario)){
             usuarios.add(usuario);
+            arquivo.writeFile(persistenciaClientes,usuario.toString() + "\n");
             return true;
         }
             return false;
@@ -125,13 +130,17 @@ public class CatalogoUsuarios {
     public String relatorioFinalClientes(){
         String aux = "";
         for (Usuario value : usuarios) {
-            aux+= value.toString() + "\n";
+            aux+= "Cadastrado Cliente: " + value.toString() + "\n";
         }
         if(!aux.equals("")){
             return aux;
         } else{
             return null;
         }
+    }
+
+    public File getPersistenciaClientes() {
+        return persistenciaClientes;
     }
 
     public String toString() {

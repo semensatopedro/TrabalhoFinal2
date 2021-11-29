@@ -24,8 +24,21 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        inicializaCadastro();
-        launch();
+        //inicializaCadastro();
+        //launch();
+        inicializaPorArquivo();
+    }
+
+    public static void inicializaPorArquivo(){
+        CatalogoUsuarios catalogoUsuarios = new CatalogoUsuarios();
+        CatalogoEntretenimento catalogoEntretenimento = new CatalogoEntretenimento();
+        CatalogoAcesso catalogoAcesso = new CatalogoAcesso();
+
+        Arquivo arquivo = new Arquivo();
+        arquivo.readFileEntretenimento(Arquivo.getArquivoEntretenimentos());
+        arquivo.readFileCliente(catalogoUsuarios.getPersistenciaClientes());
+        arquivo.readFileAcessos(Arquivo.getArquivoAcessos());
+        //System.out.println(catalogoEntretenimento.getCatalogo().toString());
     }
 
     public static void inicializaCadastro(){

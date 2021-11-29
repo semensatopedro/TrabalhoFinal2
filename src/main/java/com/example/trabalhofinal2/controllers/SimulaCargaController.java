@@ -1,6 +1,7 @@
 package com.example.trabalhofinal2.controllers;
 
 import com.example.trabalhofinal2.Main;
+import com.example.trabalhofinal2.models.Arquivo;
 import com.example.trabalhofinal2.models.CatalogoAcesso;
 import com.example.trabalhofinal2.models.CatalogoEntretenimento;
 import com.example.trabalhofinal2.models.CatalogoUsuarios;
@@ -34,10 +35,48 @@ public class SimulaCargaController {
     private final static CatalogoAcesso acessos = new CatalogoAcesso();
     private final static CatalogoEntretenimento entretenimentos = new CatalogoEntretenimento();
     private final static CatalogoUsuarios clientes = new CatalogoUsuarios();
+    private final static Arquivo arquivoConsulta = new Arquivo();
 
     public void carregamento(Text text){
         escreveMensagem(text);
         aguardaCarregamento(500);
+    }
+
+    public void cargaDeArquivos(){
+        File arquivoAcessos = new File(
+                "src/main/resources/com/example/trabalhofinal2/arquivos/"
+                        + idNomeArquivo.getText() + "-acessos.dat" );
+        File arquivoEntretenimentos = new File("src/main/resources/com/example/trabalhofinal2/arquivos/"
+                + idNomeArquivo.getText() + "-entretenimentos.dat" );
+        File arquivoClientes = new File("src/main/resources/com/example/trabalhofinal2/arquivos/"
+                + idNomeArquivo.getText() + "-clientes.dat" );
+
+        //arquivoConsulta.readFileCliente(arquivoAcessos);
+        arquivoConsulta.readFileCliente(arquivoClientes);
+        //arquivoConsulta.readFileCliente(arquivoEntretenimentos);
+
+        //String conteudoAcessos = acessos.relatorioFinalAcessos();
+        //String conteudoEntretenimentos = entretenimentos.relatorioFinalEntretenimento();
+        //String conteudoClientes = clientes.relatorioFinalClientes();
+
+        carregamento(new Text("Carregando registros de Acesso"));
+        //arquivoConsulta.writeFile(arquivoAcessos, conteudoAcessos);
+
+        escreveMensagem(new Text("Carregando registros de Entretenimento"));
+        aguardaCarregamento(500);
+        //arquivoConsulta.writeFile(arquivoEntretenimentos, conteudoEntretenimentos);
+
+        escreveMensagem(new Text("Carregando registros de Clientes"));
+        aguardaCarregamento(500);
+        //arquivoConsulta.writeFile(arquivoClientes, conteudoClientes);
+
+        escreveMensagem(new Text("\n" + "Os arquivos de consulta estão disponíveis na pasta do projeto"));
+        escreveMensagem(new Text("Acessos: "));
+       // escreveMensagem(new Text(conteudoAcessos));
+        escreveMensagem(new Text("Entretenimentos: "));
+       // escreveMensagem(new Text(conteudoEntretenimentos));
+        escreveMensagem(new Text("Clientes: "));
+       // escreveMensagem(new Text(conteudoClientes));
     }
 
     public void registra(ActionEvent event) {
@@ -49,15 +88,15 @@ public class SimulaCargaController {
         String conteudoClientes = clientes.relatorioFinalClientes();
 
         carregamento(new Text("Carregando registros de Acesso"));
-        writeFile(arquivoAcessos, conteudoAcessos);
+        //writeFile(arquivoAcessos, conteudoAcessos);
 
         escreveMensagem(new Text("Carregando registros de Entretenimento"));
         aguardaCarregamento(500);
-        writeFile(arquivoEntretenimentos, conteudoEntretenimentos);
+        //writeFile(arquivoEntretenimentos, conteudoEntretenimentos);
 
         escreveMensagem(new Text("Carregando registros de Clientes"));
         aguardaCarregamento(500);
-        writeFile(arquivoClientes, conteudoClientes);
+        //writeFile(arquivoClientes, conteudoClientes);
 
         escreveMensagem(new Text("\n" + "Os arquivos de consulta estão disponíveis na pasta do projeto"));
         escreveMensagem(new Text("Acessos: "));
@@ -66,17 +105,6 @@ public class SimulaCargaController {
         escreveMensagem(new Text(conteudoEntretenimentos));
         escreveMensagem(new Text("Clientes: "));
         escreveMensagem(new Text(conteudoClientes));
-    }
-
-
-    public void writeFile(File strFile, String strData){
-
-        try(BufferedWriter bfwriter = new BufferedWriter(new FileWriter(strFile,true))){
-            bfwriter.write(strData);
-
-        }catch(IOException e){
-            e.printStackTrace();
-        }
     }
 
     public void voltar(ActionEvent event){

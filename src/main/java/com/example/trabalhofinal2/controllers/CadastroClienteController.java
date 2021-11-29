@@ -48,7 +48,7 @@ public class CadastroClienteController implements Initializable {
     private Button cadastrar;
 
 
-    private final CatalogoUsuarios clientes = new CatalogoUsuarios();
+    private static CatalogoUsuarios clientes = new CatalogoUsuarios();
     private static ClienteEmpresarial clienteEmpresarialPadrao = null;
     private static ClienteEmpresarial clienteEmpresarial = new ClienteEmpresarial(
             "Cliente Empresarial","","","","");
@@ -74,7 +74,6 @@ public class CadastroClienteController implements Initializable {
                 }
             }
             @Override
-       // não usado
             public ClienteEmpresarial fromString(String s) {
                return null;
            }
@@ -100,23 +99,6 @@ public class CadastroClienteController implements Initializable {
                 return cell;
             }
         });
-
-       //empresaChoiceBox.setConverter(new StringConverter<ClienteEmpresarial>() {
-       //         @Override
-       //         public String toString(ClienteEmpresarial clienteEmpresarial) {
-       //             if(clienteEmpresarial==null){
-       //                 return null;
-       //             }
-       //                 return clienteEmpresarial.getNome();
-       //        }
-       //         @Override
-       //         public ClienteEmpresarial fromString(String s) {
-       //             return null;
-       //         }
-       //     });
-       // }catch(RuntimeException is){
-       //     System.out.println("Peguei a exception");
-       // }
 
         empresaChoiceBox.getSelectionModel().selectedItemProperty().addListener(
                 (v1,oldValue1,newValue1) -> clienteEmpresarialPadrao = (ClienteEmpresarial) empresaChoiceBox.getSelectionModel().getSelectedItem());

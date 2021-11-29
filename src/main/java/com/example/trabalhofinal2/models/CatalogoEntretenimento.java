@@ -1,10 +1,15 @@
 package com.example.trabalhofinal2.models;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class CatalogoEntretenimento {
 
     private final static ArrayList<Entretenimento> entretenimentos = new ArrayList<>();
+    private static Arquivo arquivo = new Arquivo();
+    private static File persistenciaEntretenimento= new File(
+            "src/main/resources/com/example/trabalhofinal2/arquivos/persistencia-entretenimento.dat");
+
 
     public ArrayList<Entretenimento> getCatalogo() { return entretenimentos; }
 
@@ -20,6 +25,8 @@ public class CatalogoEntretenimento {
     public boolean addEntretenimentoValido(Entretenimento entretenimento){
         if(codigoUnico(entretenimento)){
             entretenimentos.add(entretenimento);
+            arquivo.writeFile(persistenciaEntretenimento,entretenimento.toString() + "\n");
+            System.out.println("Adicionou e escreveu");
             return true;
         }
         return false;
@@ -101,7 +108,7 @@ public class CatalogoEntretenimento {
     public String relatorioFinalEntretenimento(){
         String aux = "";
         for (Entretenimento value : entretenimentos) {
-                aux+= value.toString() + "\n";
+                aux+= "Cadastrado Entretenimento: " + value.toString() + "\n";
             }
         if(!aux.equals("")){
             return aux;
