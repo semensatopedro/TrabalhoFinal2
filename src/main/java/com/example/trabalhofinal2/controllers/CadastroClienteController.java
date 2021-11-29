@@ -71,7 +71,7 @@ public class CadastroClienteController implements Initializable {
                 try {
                     return cliente.getNome();
                 } catch (NullPointerException e) {
-                    System.out.println("Deu problema");
+                    //Classe vazia
                     return "";
                 }
             }
