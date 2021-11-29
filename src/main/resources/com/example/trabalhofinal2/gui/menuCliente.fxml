@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.trabalhofinal2.controllers.MenuClienteController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="434.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trabalhofinal2.controllers.MenuClienteController">
+   <children>
+      <Text layoutX="85.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seja bem vindo">
+         <font>
+            <Font name="Montserrat ExtraBold" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="85.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="O que deseja fazer?">
+         <font>
+            <Font name="Montserrat ExtraBold" size="20.0" />
+         </font>
+      </Text>
+      <Button fx:id="idConsultaCobranca" layoutX="196.0" layoutY="179.0" mnemonicParsing="false" onAction="#acessaConsultaCobranca" prefHeight="141.0" prefWidth="109.0" />
+      <Button fx:id="idConsultaEntretenimento" layoutX="77.0" layoutY="179.0" mnemonicParsing="false" onAction="#acessaEntretenimento" prefHeight="141.0" prefWidth="109.0" />
+      <Text layoutX="88.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entretenimento">
+         <font>
+            <Font name="Source Sans Pro" size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="223.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Consulta">
+         <font>
+            <Font name="Source Sans Pro" size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="221.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cobrança">
+         <font>
+            <Font name="Source Sans Pro" size="13.0" />
+         </font>
+      </Text>
+      <Button fx:id="logout" layoutX="481.0" layoutY="375.0" mnemonicParsing="false" onAction="#logout" text="Logout">
+         <font>
+            <Font name="Source Sans Pro" size="13.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>
