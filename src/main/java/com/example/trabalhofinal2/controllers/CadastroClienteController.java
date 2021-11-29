@@ -10,12 +10,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import javafx.util.StringConverter;
 
 import java.io.IOException;
@@ -45,7 +43,7 @@ public class CadastroClienteController implements Initializable {
     @FXML
     private TextArea textArea;
     @FXML
-    private ChoiceBox empresaChoiceBox;
+    private ComboBox empresaChoiceBox;
     @FXML
     private Button cadastrar;
 
@@ -85,9 +83,25 @@ public class CadastroClienteController implements Initializable {
                 (v,oldValue,newValue) -> carregaOpcaoCliente((Cliente) myChoiceBox.getSelectionModel().getSelectedItem()));
         empresaChoiceBox.getItems().add(nenhum);
         empresaChoiceBox.getItems().addAll(clientes.listaClientesEmpresariais());
+        empresaChoiceBox.setCellFactory(new Callback<ListView<Cliente>, ListCell<Cliente>>() {
+            @Override
+            public ListCell<Cliente> call(ListView<Cliente> param) {
+                ListCell<Cliente> cell = new ListCell<Cliente>() {
+                    @Override
+                    protected void updateItem(Cliente item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if(item != null) {
+                            setText(item.getNome());
+                        } else {
+                            setText(null);
+                        }
+                    }
+                };
+                return cell;
+            }
+        });
 
-       // try{
-       //     empresaChoiceBox.setConverter(new StringConverter<ClienteEmpresarial>() {
+       //empresaChoiceBox.setConverter(new StringConverter<ClienteEmpresarial>() {
        //         @Override
        //         public String toString(ClienteEmpresarial clienteEmpresarial) {
        //             if(clienteEmpresarial==null){

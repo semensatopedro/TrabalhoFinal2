@@ -19,8 +19,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class CatalogoEntretenimentoController implements Initializable {
     //Aqui terei de marcar a data e hora que determinado indivíduo clicou
@@ -57,6 +56,7 @@ public class CatalogoEntretenimentoController implements Initializable {
     private final static CatalogoEntretenimento entretenimentos = new CatalogoEntretenimento();
     private static String opcaoUsuario = null;
     private static String ordenacaoUsuario = null;
+
     private static ArrayList<Entretenimento> ultimaBuscaRealizada = new ArrayList<>();
 
     @Override
@@ -200,7 +200,7 @@ public class CatalogoEntretenimentoController implements Initializable {
     public int validaAno(TextField textField){
         if(validaInteiro(textField) == -1){
             return -1;
-        } else if(validaInteiro(textField)<1500 || validaInteiro(textField)>2021){
+        } else if(validaInteiro(textField)<1800 || validaInteiro(textField)>2021){
             escreveMensagem(new Text("O ano cadastrado é inválido."));
             campoInvalido(textField);
             return -1;
@@ -259,10 +259,17 @@ public class CatalogoEntretenimentoController implements Initializable {
         ultimaBuscaRealizada = buscaAtualizada;
     }
 
-    public  ArrayList<Entretenimento> getUltimaBuscaRealizada(){
+    public ArrayList<Entretenimento> getUltimaBuscaRealizada(){
         return ultimaBuscaRealizada;
     }
 
+    public void ordenaBuscaRealizadaTitulo(){
+        Collections.sort(ultimaBuscaRealizada,
+                Comparator.comparing(Entretenimento::getTitulo));
+    }
+    public static String getOpcaoUsuario() {
+        return opcaoUsuario;
+    }
 
     public void limpaCampos(){
         idCodigo.clear();

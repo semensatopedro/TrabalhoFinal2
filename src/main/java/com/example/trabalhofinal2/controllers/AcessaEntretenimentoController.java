@@ -18,6 +18,9 @@ import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AcessaEntretenimentoController implements Initializable {
@@ -36,9 +39,16 @@ public class AcessaEntretenimentoController implements Initializable {
     private static final CatalogoEntretenimentoController catalogoSelecionado = new CatalogoEntretenimentoController();
     private static final CatalogoAcesso acessos = new CatalogoAcesso();
     private static Login login = new Login();
+    private static CatalogoEntretenimento entretenimentos = null;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if(catalogoSelecionado.getOpcaoUsuario().equals("Titulo (Crescente)")){
+            catalogoSelecionado.ordenaBuscaRealizadaTitulo();
+        }else{
+            Collections.sort(catalogoSelecionado.getUltimaBuscaRealizada(),
+                    Comparator.comparing(Entretenimento::getAnoLancamento));
+        }
 
         listView.getItems().addAll(catalogoSelecionado.getUltimaBuscaRealizada());
         listView.setCellFactory(new Callback<ListView<Entretenimento>, ListCell<Entretenimento>>() {
@@ -60,6 +70,7 @@ public class AcessaEntretenimentoController implements Initializable {
         });
         listView.getSelectionModel().selectedItemProperty().addListener(
                 (v,oldValue,newValue) -> {
+                    textAcerto.setVisible(false);
                     ativaAcesso(newValue);
                 });
     }

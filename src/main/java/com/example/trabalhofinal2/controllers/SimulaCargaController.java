@@ -60,13 +60,10 @@ public class SimulaCargaController {
         writeFile(arquivoClientes, conteudoClientes);
 
         escreveMensagem(new Text("\n" + "Os arquivos de consulta estão disponíveis na pasta do projeto"));
-        escreveMensagem(new Text("\n"));
         escreveMensagem(new Text("Acessos: "));
         escreveMensagem(new Text(conteudoAcessos));
-        escreveMensagem(new Text("\n"));
         escreveMensagem(new Text("Entretenimentos: "));
         escreveMensagem(new Text(conteudoEntretenimentos));
-        escreveMensagem(new Text("\n"));
         escreveMensagem(new Text("Clientes: "));
         escreveMensagem(new Text(conteudoClientes));
     }

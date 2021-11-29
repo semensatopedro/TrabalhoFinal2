@@ -228,7 +228,8 @@ public class CadastroEntretenimentoController implements Initializable{
 
         Serie serie = new Serie(codigoUsuario,tituloUsuario,anoLancamentoUsuario,anoConclusaoUsuario);
 
-        if(validaCadastro(serie) && anoConclusaoUsuario!=-1){
+        if(validaCadastro(serie) && anoConclusaoUsuario!=-1 &&
+                validaIntervaloEntreAnos(anoLancamentoUsuario,anoConclusaoUsuario)){
             if(entretenimentos.addEntretenimentoValido(serie)){
                 escreveMensagem(new Text("Serie cadastrado com sucesso." + "\n" + serie.toString()));
             }else{
@@ -315,6 +316,16 @@ public class CadastroEntretenimentoController implements Initializable{
         } else{
             return true;
         }
+    }
+
+    public boolean validaIntervaloEntreAnos(int ano1, int ano2){
+        if(ano1>ano2){
+            escreveMensagem(new Text("O intervalo entre anos é inválido"));
+            campoInvalido(idAnoLancamento);
+            campoInvalido(idAnoConclusao);
+            return false;
+        }
+        return true;
     }
 
     public void campoInvalido(TextField textField){

@@ -8,6 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.control.ComboBox?>
 <AnchorPane prefHeight="434.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.trabalhofinal2.controllers.CadastroClienteController">
    <children>
       <TextArea fx:id="textArea" layoutX="363.0" layoutY="64.0" prefHeight="326.0" prefWidth="217.0" />
@@ -32,7 +33,7 @@
       <TextField fx:id="idEmail" layoutX="63.0" layoutY="205.0" prefHeight="26.0" prefWidth="150.0" promptText="Email" visible="false" />
       <TextField fx:id="idSenha" layoutX="224.0" layoutY="205.0" prefHeight="26.0" prefWidth="118.0" promptText="Senha" visible="false" />
       <TextField fx:id="idCpf" layoutX="224.0" layoutY="249.0" prefHeight="26.0" prefWidth="118.0" promptText="CPF" visible="false" />
-      <ChoiceBox fx:id="empresaChoiceBox" layoutX="63.0" layoutY="290.0" prefHeight="26.0" prefWidth="118.0" value="Nenhum" visible="false" />
+      <ComboBox fx:id="empresaChoiceBox" layoutX="63.0" layoutY="290.0" prefHeight="26.0" prefWidth="118.0" value="Nenhum" visible="false" />
       <TextField fx:id="idNome" layoutX="63.0" layoutY="248.0" prefHeight="26.0" prefWidth="150.0" promptText="Nome" visible="false" />
       <TextField fx:id="idCnpj" layoutX="224.0" layoutY="249.0" prefHeight="26.0" prefWidth="118.0" promptText="CNPJ" visible="false" />
       <TextField fx:id="idNomeFantasia" layoutX="63.0" layoutY="287.0" promptText="Nome Fantasia" visible="false" />
