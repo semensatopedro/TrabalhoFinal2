@@ -68,25 +68,6 @@ public class CatalogoUsuarios {
         }
         return aux;
     }
-     public ArrayList<ClienteIndividual> listaClientesIndividuaisComEmpresa(){
-         ArrayList<ClienteIndividual> aux = new ArrayList<>();
-         for (Usuario value : usuarios) {
-             if (value.defineTipo()==3) {
-                 aux.add((ClienteIndividual) value);
-             }
-         }
-         return aux;
-     }
-
-    public ArrayList<ClienteIndividual> listaClientesIndividuaisSemEmpresa(){
-        ArrayList<ClienteIndividual> aux = new ArrayList<>();
-        for (Usuario value : usuarios) {
-            if (value.defineTipo()==1) {
-                aux.add((ClienteIndividual) value);
-            }
-        }
-        return aux;
-    }
 
      public ArrayList<ClienteEmpresarial> listaClientesEmpresariais(){
          ArrayList<ClienteEmpresarial> aux = new ArrayList<>();
@@ -126,22 +107,6 @@ public class CatalogoUsuarios {
         }
         return true;
      }
-
-    public String relatorioFinalClientes(){
-        String aux = "";
-        for (Usuario value : usuarios) {
-            aux+= "Cadastrado Cliente: " + value.toString() + "\n";
-        }
-        if(!aux.equals("")){
-            return aux;
-        } else{
-            return null;
-        }
-    }
-
-    public File getPersistenciaClientes() {
-        return persistenciaClientes;
-    }
 
     public String toString() {
         return "\n";
