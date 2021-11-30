@@ -3,6 +3,7 @@ package com.example.trabalhofinal2.models;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -26,23 +27,23 @@ class AcessoTest {
         assertEquals(acessoTest.getDataHora(), LocalDate.now());
     }
 
-//    @Test
-//    void setCobrancaTest() {
-//        acessoTest.setCobranca(1);
-//        assertEquals(acessoTest.getCobranca(), 1);
-//    }
+    @Test
+    void setCobrancaTest() {
+        acessoTest.setCobranca(1);
+        assertEquals(acessoTest.getCobranca(), 1);
+    }
 
-//    @Test
-//    void getCobrancaTest() {
-//        assertEquals(acessoTest.getCobranca(), 1);
-//    }
+    @Test
+    void getCobrancaTest() {
+        assertEquals(acessoTest.getCobranca(), 1);
+    }
 
-//    @Test
-//    void toStringTest() {
-//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy;HH:mm");
-//        String data = dtf.format(LocalDate.now());
-//        String resultado = data + ";" + cliente1.getEmail() + ";" + entr1.getCodigo();
-//
-//        assertEquals(acessoTest.toString(), resultado);
-//    }
+    @Test
+    void toStringTest() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy;HH:mm");
+        String data = dtf.format(LocalDate.now());
+        String resultado = data + ";" + cliente1.getEmail() + ";" + entr1.getCodigo();
+
+        assertEquals(acessoTest.toString(), resultado);
+    }
 }

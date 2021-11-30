@@ -69,13 +69,12 @@ public class CatalogoUsuariosTest {
     }
 
     @Test
-    void testListaNome() {
-        ArrayList<String> response = catalogo.listaNome(catalogo.listaClientesEmpresariais());
+    void testRelatorioFinalClientes() {
+        String response = catalogo.relatorioFinalClientes();
 
-        ArrayList<String> arrString = new ArrayList<>();
-        arrString.add("Yamaguti S.A");
+        String string = "";
         
-        assertEquals(response, arrString);
+        assertEquals(response, string);
     }
 
     @Test

@@ -1,6 +1,4 @@
 module com.example.trabalhofinal2 {
-    requires javafx.controls;
-    requires javafx.fxml;
 
     requires org.kordamp.bootstrapfx.core;
 
