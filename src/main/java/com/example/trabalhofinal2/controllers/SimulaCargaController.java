@@ -64,41 +64,13 @@ public class SimulaCargaController {
         escreveMensagem(new Text("Carregando registros de Entretenimento"));
         escreveMensagem(new Text("Carregando registros de Clientes"));
         escreveMensagem(new Text("\n" + "Os arquivos de consulta estão disponíveis na pasta do projeto"));
-        escreveMensagem(new Text("Acessos: "));
+        escreveMensagem(new Text("Acessos Cadastrados: "));
         escreveMensagem(new Text(conteudoAcessos));
-        escreveMensagem(new Text("Entretenimentos: "));
+        escreveMensagem(new Text("Entretenimentos Cadastrados: "));
         escreveMensagem(new Text(conteudoEntretenimentos));
-        escreveMensagem(new Text("Clientes: "));
+        escreveMensagem(new Text("Clientes Cadastrados: "));
         escreveMensagem(new Text(conteudoClientes));
     }
-
-//    public void registra(ActionEvent event) {
-//        File arquivoAcessos = new File(idNomeArquivo.getText() + "-acessos.dat" );
-//        File arquivoEntretenimentos = new File(idNomeArquivo.getText() + "-entretenimentos.dat" );
-//        File arquivoClientes = new File(idNomeArquivo.getText() + "-clientes.dat" );
-//        String conteudoAcessos = acessos.relatorioFinalAcessos();
-//        String conteudoEntretenimentos = entretenimentos.relatorioFinalEntretenimento();
-//        String conteudoClientes = clientes.relatorioFinalClientes();
-//
-//        carregamento(new Text("Carregando registros de Acesso"));
-//        //writeFile(arquivoAcessos, conteudoAcessos);
-//
-//        escreveMensagem(new Text("Carregando registros de Entretenimento"));
-//        aguardaCarregamento(500);
-//        //writeFile(arquivoEntretenimentos, conteudoEntretenimentos);
-//
-//        escreveMensagem(new Text("Carregando registros de Clientes"));
-//        aguardaCarregamento(500);
-//        //writeFile(arquivoClientes, conteudoClientes);
-//
-//        escreveMensagem(new Text("\n" + "Os arquivos de consulta estão disponíveis na pasta do projeto"));
-//        escreveMensagem(new Text("Acessos: "));
-//        escreveMensagem(new Text(conteudoAcessos));
-//        escreveMensagem(new Text("Entretenimentos: "));
-//        escreveMensagem(new Text(conteudoEntretenimentos));
-//        escreveMensagem(new Text("Clientes: "));
-//        escreveMensagem(new Text(conteudoClientes));
-//    }
 
     public void voltar(ActionEvent event){
         carregaCena("gui/menuAdm.fxml",event);
