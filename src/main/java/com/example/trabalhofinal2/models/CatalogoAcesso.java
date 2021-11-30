@@ -101,5 +101,6 @@ public class CatalogoAcesso {
         }
         return valorFinal;
     }
+
 }
 
