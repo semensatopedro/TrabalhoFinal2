@@ -15,6 +15,8 @@ public class AdministradorTest {
 
     @Test
     void testWriteFile() {
-        adm.writeFile(new File("src/main/resources/com/example/trabalhofinal2/arquivos/arquivosTeste/teste.dat"), "Arquivo gerado pela classe AdminsitradorTest!");
+        adm.writeFile(new File("src/main/resources/com/example/trabalhofinal2/arquivos/geradoPelosTestes.dat"), "Arquivo gerado pela classe AdminsitradorTest!");
+        File novoArquivoGerado = new File("src/main/resources/com/example/trabalhofinal2/arquivos/geradoPelosTestes.dat");
+        novoArquivoGerado.delete();
     }
 }
