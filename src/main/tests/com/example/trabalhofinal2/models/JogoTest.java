@@ -1,9 +1,10 @@
-package com.example.tests;
+package com.example.trabalhofinal2.models;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import com.example.trabalhofinal2.models.Jogo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class JogoTest {
     private Jogo jogoTest;

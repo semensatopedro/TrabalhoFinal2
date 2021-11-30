@@ -1,8 +1,9 @@
-package com.example.tests;
+package com.example.trabalhofinal2.models;
+
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 
-import org.junit.jupiter.api.Test;
 
 public class AdministradorTest {
     private Administrador adm = new Administrador("administracao@mail.com", "adm123");
@@ -14,6 +15,6 @@ public class AdministradorTest {
 
     @Test
     void testWriteFile() {
-        adm.writeFile(new File("src/main/resources/com/example/trabalhofinal2/arquivos/teste.dat"), "Conteudo de teste");
+        adm.writeFile(new File("src/main/resources/com/example/trabalhofinal2/arquivos/arquivosTeste/teste.dat"), "Arquivo gerado pela classe AdminsitradorTest!");
     }
 }

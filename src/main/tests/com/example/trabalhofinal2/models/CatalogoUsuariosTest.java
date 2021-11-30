@@ -1,13 +1,13 @@
-package com.example.tests;
+package com.example.trabalhofinal2.models;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.util.ArrayList;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 public class CatalogoUsuariosTest {
     private CatalogoUsuarios catalogo;
@@ -34,7 +34,7 @@ public class CatalogoUsuariosTest {
     @Test
     void testBuscaUsuarioPorEmail() {
         Usuario response = catalogo.buscaUsuarioPorEmail("yama@mail.com");
-        assertEquals(response, cliente2);
+        assertEquals(response.toString(), cliente2.toString());
     }
 
     @Test
@@ -65,7 +65,7 @@ public class CatalogoUsuariosTest {
 
     @Test
     void testListaClientesIndividuaisSemEmpresa() {
-        assertEquals(catalogo.listaClientesIndividuaisSemEmpresa().size(), 1);
+        assertEquals(catalogo.listaClientesIndividuaisSemEmpresa().size(), 2);
     }
 
     @Test

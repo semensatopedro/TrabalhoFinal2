@@ -1,9 +1,11 @@
-package com.example.tests;
+package com.example.trabalhofinal2.models;
 
-import static org.junit.Assert.assertEquals;
-
+import com.example.trabalhofinal2.models.EpisodioSerie;
+import com.example.trabalhofinal2.models.Serie;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class EpisodioSerieTest {
     private EpisodioSerie episodioTest;
