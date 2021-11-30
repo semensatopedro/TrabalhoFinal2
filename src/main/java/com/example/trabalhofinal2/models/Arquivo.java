@@ -187,4 +187,27 @@ public class Arquivo {
             return -1;
         }
     }
+
+    public String readFileRelatorio(File strFile){
+
+        String aux = "";
+
+        try(BufferedReader buffRead = new BufferedReader((new FileReader(strFile)))){
+            System.out.println("Chegou aqui em cima");
+            while(buffRead.ready()) {
+                String line = buffRead.readLine();
+                aux += line + "\n";
+            }
+
+        } catch (IOException e){
+            System.out.println("Arquivo não encontrado. Tente novamente");
+            return null;
+        }
+
+        if (aux.equals("")){
+            return null;
+        } else{
+            return aux;
+        }
+    }
 }

@@ -102,7 +102,8 @@ public class CatalogoAcesso {
         return valorFinal;
     }
 
-    public String relatorioFinalAcessos(){
+    public String relatorioFinalAcessos(File file){
+
         String aux = "";
         for (Acesso value : acessos) {
             aux+= "Cadastrado Acesso: " + value.toString() + "\n";

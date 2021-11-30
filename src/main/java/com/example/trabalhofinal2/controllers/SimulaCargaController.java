@@ -42,62 +42,27 @@ public class SimulaCargaController {
         aguardaCarregamento(500);
     }
 
-    public void cargaDeArquivos(){
+    public void registra(ActionEvent event){
         File arquivoAcessos = new File(
                 "src/main/resources/com/example/trabalhofinal2/arquivos/"
                         + idNomeArquivo.getText() + "-acessos.dat" );
         File arquivoEntretenimentos = new File("src/main/resources/com/example/trabalhofinal2/arquivos/"
-                + idNomeArquivo.getText() + "-entretenimentos.dat" );
+                + idNomeArquivo.getText() + "-entretenimento.dat" );
         File arquivoClientes = new File("src/main/resources/com/example/trabalhofinal2/arquivos/"
                 + idNomeArquivo.getText() + "-clientes.dat" );
 
-        //arquivoConsulta.readFileCliente(arquivoAcessos);
+
         arquivoConsulta.readFileCliente(arquivoClientes);
-        //arquivoConsulta.readFileCliente(arquivoEntretenimentos);
+        arquivoConsulta.readFileEntretenimento(arquivoEntretenimentos);
+        arquivoConsulta.readFileAcessos(arquivoAcessos);
 
-        //String conteudoAcessos = acessos.relatorioFinalAcessos();
-        //String conteudoEntretenimentos = entretenimentos.relatorioFinalEntretenimento();
-        //String conteudoClientes = clientes.relatorioFinalClientes();
-
-        carregamento(new Text("Carregando registros de Acesso"));
-        //arquivoConsulta.writeFile(arquivoAcessos, conteudoAcessos);
-
-        escreveMensagem(new Text("Carregando registros de Entretenimento"));
-        aguardaCarregamento(500);
-        //arquivoConsulta.writeFile(arquivoEntretenimentos, conteudoEntretenimentos);
-
-        escreveMensagem(new Text("Carregando registros de Clientes"));
-        aguardaCarregamento(500);
-        //arquivoConsulta.writeFile(arquivoClientes, conteudoClientes);
-
-        escreveMensagem(new Text("\n" + "Os arquivos de consulta estão disponíveis na pasta do projeto"));
-        escreveMensagem(new Text("Acessos: "));
-       // escreveMensagem(new Text(conteudoAcessos));
-        escreveMensagem(new Text("Entretenimentos: "));
-       // escreveMensagem(new Text(conteudoEntretenimentos));
-        escreveMensagem(new Text("Clientes: "));
-       // escreveMensagem(new Text(conteudoClientes));
-    }
-
-    public void registra(ActionEvent event) {
-        File arquivoAcessos = new File(idNomeArquivo.getText() + "-acessos.dat" );
-        File arquivoEntretenimentos = new File(idNomeArquivo.getText() + "-entretenimentos.dat" );
-        File arquivoClientes = new File(idNomeArquivo.getText() + "-clientes.dat" );
-        String conteudoAcessos = acessos.relatorioFinalAcessos();
-        String conteudoEntretenimentos = entretenimentos.relatorioFinalEntretenimento();
-        String conteudoClientes = clientes.relatorioFinalClientes();
+        String conteudoAcessos = arquivoConsulta.readFileRelatorio(arquivoAcessos);
+        String conteudoEntretenimentos = arquivoConsulta.readFileRelatorio(arquivoEntretenimentos);
+        String conteudoClientes = arquivoConsulta.readFileRelatorio(arquivoClientes);
 
         carregamento(new Text("Carregando registros de Acesso"));
-        //writeFile(arquivoAcessos, conteudoAcessos);
-
         escreveMensagem(new Text("Carregando registros de Entretenimento"));
-        aguardaCarregamento(500);
-        //writeFile(arquivoEntretenimentos, conteudoEntretenimentos);
-
         escreveMensagem(new Text("Carregando registros de Clientes"));
-        aguardaCarregamento(500);
-        //writeFile(arquivoClientes, conteudoClientes);
-
         escreveMensagem(new Text("\n" + "Os arquivos de consulta estão disponíveis na pasta do projeto"));
         escreveMensagem(new Text("Acessos: "));
         escreveMensagem(new Text(conteudoAcessos));
@@ -106,6 +71,34 @@ public class SimulaCargaController {
         escreveMensagem(new Text("Clientes: "));
         escreveMensagem(new Text(conteudoClientes));
     }
+
+//    public void registra(ActionEvent event) {
+//        File arquivoAcessos = new File(idNomeArquivo.getText() + "-acessos.dat" );
+//        File arquivoEntretenimentos = new File(idNomeArquivo.getText() + "-entretenimentos.dat" );
+//        File arquivoClientes = new File(idNomeArquivo.getText() + "-clientes.dat" );
+//        String conteudoAcessos = acessos.relatorioFinalAcessos();
+//        String conteudoEntretenimentos = entretenimentos.relatorioFinalEntretenimento();
+//        String conteudoClientes = clientes.relatorioFinalClientes();
+//
+//        carregamento(new Text("Carregando registros de Acesso"));
+//        //writeFile(arquivoAcessos, conteudoAcessos);
+//
+//        escreveMensagem(new Text("Carregando registros de Entretenimento"));
+//        aguardaCarregamento(500);
+//        //writeFile(arquivoEntretenimentos, conteudoEntretenimentos);
+//
+//        escreveMensagem(new Text("Carregando registros de Clientes"));
+//        aguardaCarregamento(500);
+//        //writeFile(arquivoClientes, conteudoClientes);
+//
+//        escreveMensagem(new Text("\n" + "Os arquivos de consulta estão disponíveis na pasta do projeto"));
+//        escreveMensagem(new Text("Acessos: "));
+//        escreveMensagem(new Text(conteudoAcessos));
+//        escreveMensagem(new Text("Entretenimentos: "));
+//        escreveMensagem(new Text(conteudoEntretenimentos));
+//        escreveMensagem(new Text("Clientes: "));
+//        escreveMensagem(new Text(conteudoClientes));
+//    }
 
     public void voltar(ActionEvent event){
         carregaCena("gui/menuAdm.fxml",event);

@@ -37,11 +37,11 @@ public class Main extends Application {
         Administrador adm = new Administrador("administracao@mail.com","admin123");
         catalogoUsuarios.addClienteValido(adm);
 
-        
+
         Arquivo arquivo = new Arquivo();
-        arquivo.readFileEntretenimento(Arquivo.getArquivoEntretenimentos());
-        arquivo.readFileCliente(Arquivo.getArquivoClientes());
-        arquivo.readFileAcessos(Arquivo.getArquivoAcessos());
+        //arquivo.readFileEntretenimento(Arquivo.getArquivoEntretenimentos());
+        //arquivo.readFileCliente(Arquivo.getArquivoClientes());
+        //arquivo.readFileAcessos(Arquivo.getArquivoAcessos());
     }
 
     public static void inicializaCadastro(){
