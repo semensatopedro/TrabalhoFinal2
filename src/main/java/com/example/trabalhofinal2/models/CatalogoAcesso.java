@@ -102,21 +102,5 @@ public class CatalogoAcesso {
         return valorFinal;
     }
 
-    public String relatorioFinalAcessos(File file){
-
-        String aux = "";
-        for (Acesso value : acessos) {
-            aux+= "Cadastrado Acesso: " + value.toString() + "\n";
-        }
-        if(!aux.equals("")){
-            return aux;
-        } else{
-            return null;
-        }
-    }
-
-    public  File getPersistenciaAcessos() {
-        return persistenciaAcessos;
-    }
 }
 

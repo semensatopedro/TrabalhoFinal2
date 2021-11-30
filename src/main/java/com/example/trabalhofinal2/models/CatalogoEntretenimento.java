@@ -105,19 +105,6 @@ public class CatalogoEntretenimento {
         return null;
     }
 
-    public String relatorioFinalEntretenimento(){
-        String aux = "";
-        for (Entretenimento value : entretenimentos) {
-                aux+= "Cadastrado Entretenimento: " + value.toString() + "\n";
-            }
-        if(!aux.equals("")){
-            return aux;
-        } else{
-            return null;
-        }
-
-
-    }
 
 }
 
