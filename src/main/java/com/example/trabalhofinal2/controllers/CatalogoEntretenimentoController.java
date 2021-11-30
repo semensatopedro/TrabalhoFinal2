@@ -52,6 +52,8 @@ public class CatalogoEntretenimentoController implements Initializable {
     private TextArea textArea;
     @FXML
     private Button consultar;
+    @FXML
+    private Text idTextoConfirmou;
 
     private final static CatalogoEntretenimento entretenimentos = new CatalogoEntretenimento();
     private static String opcaoUsuario = null;
@@ -61,6 +63,7 @@ public class CatalogoEntretenimentoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        idTextoConfirmou.setVisible(false);
         tipoChoiceBox.getItems().addAll(
                 "Codigo",
                 "Ano de Lançamento",
@@ -94,20 +97,32 @@ public class CatalogoEntretenimentoController implements Initializable {
         if(opcaoUsuario.equals("Codigo")){
             limpaCampos();
             idCodigo.setDisable(false);
-            consultar.setOnAction(actionEvent -> formularioCodigo());
+            consultar.setOnAction(actionEvent -> {
+                idTextoConfirmou.setVisible(true);
+                formularioCodigo();
+            });
         }else if(opcaoUsuario.equals("Ano de Lançamento")){
             limpaCampos();
             idAnoLancamentoInicio.setDisable(false);
             idAnoLancamentoFinal.setDisable(false);
-            consultar.setOnAction(actionEvent -> formularioAnoLancamento());
+            consultar.setOnAction(actionEvent -> {
+                idTextoConfirmou.setVisible(true);
+                formularioAnoLancamento();
+            });
         }else if(opcaoUsuario.equals("Titulo")){
             limpaCampos();
             idTitulo.setDisable(false);
-            consultar.setOnAction(actionEvent -> formularioTitulo());
+            consultar.setOnAction(actionEvent -> {
+                idTextoConfirmou.setVisible(true);
+                formularioTitulo();
+            });
         }else if(opcaoUsuario.equals("Titulo Incompleto")){
             limpaCampos();
             idTituloIncompleto.setDisable(false);
-            consultar.setOnAction(actionEvent -> formularioTituloIncompleto());
+            consultar.setOnAction(actionEvent -> {
+                idTextoConfirmou.setVisible(true);
+                formularioTituloIncompleto();
+            });;
         }
     }
 
@@ -149,9 +164,10 @@ public class CatalogoEntretenimentoController implements Initializable {
         String titulo = validaString(idTitulo);
         if(!validaString(idTitulo).equals("")){
             if (entretenimentos.buscaPorTituloCompleto(titulo)!=null){
-                System.out.println("Chegou aqui");
                 atualizaBusca(entretenimentos.buscaPorTituloCompleto(titulo));
-                consultar.setOnAction(actionEvent -> carregaCena("gui/acessaEntretenimento.fxml",actionEvent));
+                consultar.setOnAction(actionEvent -> {
+                    carregaCena("gui/acessaEntretenimento.fxml",actionEvent);
+                });
             }else{
                 escreveMensagem(new Text("Não encontramos nenhum entretenimento com este título"));
             }
@@ -163,7 +179,6 @@ public class CatalogoEntretenimentoController implements Initializable {
         String tituloIncompleto = validaString(idTituloIncompleto);
         if(!validaString(idTituloIncompleto).equals("")){
             if (entretenimentos.buscaPorTituloIncompleto(tituloIncompleto)!=null){
-                System.out.println("Chegou aqui");
                 atualizaBusca(entretenimentos.buscaPorTituloIncompleto(tituloIncompleto));
                 consultar.setOnAction(actionEvent -> carregaCena("gui/acessaEntretenimento.fxml",actionEvent));
             }else{
