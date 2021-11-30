@@ -34,33 +34,42 @@ public class Login {
     @FXML
     private PasswordField passwordField;
 
-    private CatalogoUsuarios usuarios = new CatalogoUsuarios();
+    @FXML
+    private Text idUsuarioErro;
+    @FXML
+    private Text idSenhaInvalida;
+
+    private static CatalogoUsuarios usuarios = new CatalogoUsuarios();
+    private static Usuario usuarioLogado = null;
 
     public void realizarLogin(ActionEvent event){
 
         Usuario tentativaLogin = new Usuario(userField.getText(),passwordField.getText());
 
         if(usuarios.encontraEmailUsuario(tentativaLogin)){
-            System.out.println("Usuário Econtrado");
+            //Usuário encontrado
             if(usuarios.validaSenhaUsuario(tentativaLogin)){
-                System.out.println("Senha válida");
-                tentativaLogin = usuarios.buscaUsuarioPorEmail(userField.getText());
-               if (tentativaLogin.defineTipo()==1){
-                   System.out.println("É Cliente Individual sem empresa");
-               } else if(tentativaLogin.defineTipo()==2){
-                   System.out.println("É Cliente Empresarial");
-               } else if(tentativaLogin.defineTipo()==3){
-                   System.out.println("É Cliente Individual com empresa");
+                //Senha Válida
+                atualizaUsuarioLogado();
+               if (usuarioLogado.defineTipo()==1 || usuarioLogado.defineTipo()==2 ||
+                       usuarioLogado.defineTipo()==3){
+                   //É Cliente
+                   idSenhaInvalida.setVisible(false);
+                   idUsuarioErro.setVisible(false);
+                   passwordField.setStyle(null);
+                   carregaCena("gui/menuCliente.fxml",event);
                } else {
-                    System.out.println("É Administrador");
-                    carregaCena("gui/menuAdm.fxml",event);
+                    //É administrador
+                   idSenhaInvalida.setVisible(false);
+                   idUsuarioErro.setVisible(false);
+                   passwordField.setStyle(null);
+                   carregaCena("gui/menuAdm.fxml",event);
               }
             }else {
                 System.out.println("Senha inválida");
-                loginInvalido(new Text("Senha inválida"));
+                senhaInvalida(new Text("Senha inválida"));
             }
         } else {
-            //Se o usuário não foi encontrado.
             loginInvalido(new Text("Usuário não encontrado"));
             System.out.println("Usuário não encontrado, tente novamente");
         }
@@ -68,7 +77,15 @@ public class Login {
     }
 
     public void loginInvalido(Text mensagemErro){
-        campoInvalido(userField);
+        idSenhaInvalida.setVisible(false);
+        idUsuarioErro.setVisible(true);
+        userField.clear();
+        passwordField.clear();
+    }
+
+    public void senhaInvalida(Text mensagemErro){
+        idUsuarioErro.setVisible(false);
+        idSenhaInvalida.setVisible(true);
         campoInvalido(passwordField);
     }
 
@@ -79,6 +96,10 @@ public class Login {
         textField.clear();
     }
 
+    public Usuario getUsuarioLogado(){
+        return usuarioLogado;
+    }
+
     public void carregaCena(String endereco, ActionEvent event){
         try{
             root = FXMLLoader.load(Main.class.getResource(endereco));
@@ -87,6 +108,11 @@ public class Login {
             stage.setScene(scene);
             stage.show();
         }catch(IOException e){
+            System.out.println("Cena não encontrada");
         }
+    }
+
+    public void atualizaUsuarioLogado(){
+        usuarioLogado = usuarios.buscaUsuarioPorEmail(userField.getText());
     }
 }

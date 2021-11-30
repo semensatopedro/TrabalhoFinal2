@@ -3,7 +3,6 @@ package com.example.trabalhofinal2.controllers;
 import com.example.trabalhofinal2.Main;
 import com.example.trabalhofinal2.models.*;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,8 +15,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class CadastroEntretenimentoController implements Initializable{
@@ -53,15 +50,19 @@ public class CadastroEntretenimentoController implements Initializable{
     @FXML
     private TextArea textArea;
 
-    private String[] entretenimento = new String[]{"Jogo","Filme","Serie","Episodio"};
     private CatalogoEntretenimento entretenimentos = new CatalogoEntretenimento();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        myChoiceBox.getItems().addAll(entretenimento);
-        serieChoiceBox.getItems().addAll(entretenimentos.listaNomeSeries());
+        myChoiceBox.getItems().addAll(
+                "Jogo",
+                "Filme",
+                "Serie",
+                "Episodio"
+        );
         myChoiceBox.getSelectionModel().selectedItemProperty().addListener(
                 (v,oldValue,newValue) -> carregaOpcaoEntretenimento(newValue));
+        serieChoiceBox.getItems().addAll(entretenimentos.listaNomeSeries());
         serieChoiceBox.getSelectionModel().selectedItemProperty().addListener(
                 (v,oldValue,newValue) -> carregaEpisodio(entretenimentos.buscaSerie(newValue)));
 
@@ -119,6 +120,7 @@ public class CadastroEntretenimentoController implements Initializable{
         }else if(newValue.equals("Episodio")){
             limpaTela();
             limpaCampos();
+
             idCodigo.setDisable(true);
             idAnoLancamento.setDisable(true);
             idTitulo.setDisable(true);
@@ -157,6 +159,7 @@ public class CadastroEntretenimentoController implements Initializable{
             stage.setScene(scene);
             stage.show();
         }catch(IOException e){
+            escreveMensagem(new Text("Cena não encontrada"));
         }
     }
 
@@ -225,7 +228,8 @@ public class CadastroEntretenimentoController implements Initializable{
 
         Serie serie = new Serie(codigoUsuario,tituloUsuario,anoLancamentoUsuario,anoConclusaoUsuario);
 
-        if(validaCadastro(serie) && anoConclusaoUsuario!=-1){
+        if(validaCadastro(serie) && anoConclusaoUsuario!=-1 &&
+                validaIntervaloEntreAnos(anoLancamentoUsuario,anoConclusaoUsuario)){
             if(entretenimentos.addEntretenimentoValido(serie)){
                 escreveMensagem(new Text("Serie cadastrado com sucesso." + "\n" + serie.toString()));
             }else{
@@ -253,6 +257,7 @@ public class CadastroEntretenimentoController implements Initializable{
                 && numeroEpisodioUsuario!=-1){
             if(entretenimentos.addEntretenimentoValido(episodio)){
                 escreveMensagem(new Text("Episódio cadastrado com sucesso." + "\n" + episodio.toString()));
+                limpaCampos();
             }else{
                 escreveMensagem(new Text("Código " + episodio.getCodigo() + " já existe. Cadastre outro código."));
                 campoInvalido(idCodigo);
@@ -314,6 +319,16 @@ public class CadastroEntretenimentoController implements Initializable{
         }
     }
 
+    public boolean validaIntervaloEntreAnos(int ano1, int ano2){
+        if(ano1>ano2){
+            escreveMensagem(new Text("O intervalo entre anos é inválido"));
+            campoInvalido(idAnoLancamento);
+            campoInvalido(idAnoConclusao);
+            return false;
+        }
+        return true;
+    }
+
     public void campoInvalido(TextField textField){
         textField.setStyle(
                 "-fx-control-inner-background: #FFEFEF;" +
@@ -336,5 +351,11 @@ public class CadastroEntretenimentoController implements Initializable{
         idTituloOriginal.setStyle(null);
         idGenero.clear();
         idGenero.setStyle(null);
+        idAnoConclusao.clear();
+        idAnoConclusao.setStyle(null);
+        idNumeroTemporada.clear();
+        idNumeroTemporada.setStyle(null);
+        idTempoDuracao.clear();
+        idTempoDuracao.setStyle(null);
     }
 }

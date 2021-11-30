@@ -30,5 +30,9 @@ public class Usuario {
         return 0;
     }
 
+    @Override
+    public String toString(){
+        return "";
+    }
 }
 

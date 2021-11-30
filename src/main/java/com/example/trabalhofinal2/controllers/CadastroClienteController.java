@@ -1,8 +1,8 @@
 package com.example.trabalhofinal2.controllers;
 
 import com.example.trabalhofinal2.Main;
-import com.example.trabalhofinal2.models.CatalogoUsuarios;
-import com.example.trabalhofinal2.models.Entretenimento;
+import com.example.trabalhofinal2.models.*;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,12 +10,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Callback;
+import javafx.util.StringConverter;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,7 +27,7 @@ public class CadastroClienteController implements Initializable {
     private Parent root;
 
     @FXML
-    private ChoiceBox<String> myChoiceBox;
+    private ChoiceBox<Cliente> myChoiceBox;
     @FXML
     private TextField idEmail;
     @FXML
@@ -40,36 +39,80 @@ public class CadastroClienteController implements Initializable {
     @FXML
     private TextField idCnpj;
     @FXML
+    private TextField idNomeFantasia;
+    @FXML
     private TextArea textArea;
     @FXML
-    private ChoiceBox empresaChoiceBox;
+    private ComboBox empresaChoiceBox;
     @FXML
     private Button cadastrar;
 
-    private String[] cliente = new String[]{"Cliente Individual", "Cliente Empresarial"};
-    private CatalogoUsuarios clientes = new CatalogoUsuarios();
 
-    //Adicionar um item a mais no choiceBox chamado nenhum
+    private static CatalogoUsuarios clientes = new CatalogoUsuarios();
+    private static ClienteEmpresarial clienteEmpresarialPadrao = null;
+    private static ClienteEmpresarial clienteEmpresarial = new ClienteEmpresarial(
+            "Cliente Empresarial","","","","");
+    private static ClienteIndividual clienteIndividual= new ClienteIndividual(
+            "Cliente Individual","","","",null);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        myChoiceBox.getItems().addAll(cliente);
-        //empresaChoiceBox.getItems().addAll(clientes.listaNome(clientes.listaClientesEmpresariais()));
+        ClienteEmpresarial nenhum =
+                new ClienteEmpresarial("Nenhuma",null,null,null,null);
+        myChoiceBox.getItems().addAll(
+                clienteIndividual,
+                clienteEmpresarial
+        );
+        myChoiceBox.setConverter(new StringConverter<Cliente>() {
+            @Override
+            public String toString(Cliente cliente) {
+                try {
+                    return cliente.getNome();
+                } catch (NullPointerException e) {
+                    //Classe vazia
+                    return "";
+                }
+            }
+            @Override
+            public ClienteEmpresarial fromString(String s) {
+               return null;
+           }
+        });
         myChoiceBox.getSelectionModel().selectedItemProperty().addListener(
-                (v,oldValue,newValue) -> carregaOpcaoCliente(newValue));
-        //empresaChoiceBox.getSelectionModel().selectedItemProperty().addListener(
-        //        (v,oldValue,newValue) -> System.out.println(newValue));
+                (v,oldValue,newValue) -> carregaOpcaoCliente((Cliente) myChoiceBox.getSelectionModel().getSelectedItem()));
+        empresaChoiceBox.getItems().add(nenhum);
+        empresaChoiceBox.getItems().addAll(clientes.listaClientesEmpresariais());
+        empresaChoiceBox.setCellFactory(new Callback<ListView<Cliente>, ListCell<Cliente>>() {
+            @Override
+            public ListCell<Cliente> call(ListView<Cliente> param) {
+                ListCell<Cliente> cell = new ListCell<Cliente>() {
+                    @Override
+                    protected void updateItem(Cliente item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if(item != null) {
+                            setText(item.getNome());
+                        } else {
+                            setText(null);
+                        }
+                    }
+                };
+                return cell;
+            }
+        });
 
+        empresaChoiceBox.getSelectionModel().selectedItemProperty().addListener(
+                (v1,oldValue1,newValue1) -> clienteEmpresarialPadrao = (ClienteEmpresarial) empresaChoiceBox.getSelectionModel().getSelectedItem());
     }
 
     public void voltar(ActionEvent event){
         carregaCena("gui/menuAdm.fxml",event);
     }
 
-    public void carregaOpcaoCliente(String newValue){
-        if(newValue.equals("Cliente Individual")){
+    public void carregaOpcaoCliente(Cliente cliente){
+        if(cliente.defineTipo() == 1 || cliente.defineTipo() == 3){
             limpaTela();
             limpaCampos();
+
             idEmail.setVisible(true);
             idSenha.setVisible(true);
             idNome.setVisible(true);
@@ -81,26 +124,99 @@ public class CadastroClienteController implements Initializable {
             idNome.setDisable(false);
             idCpf.setDisable(false);
 
-            cadastrar.setVisible(true);
             cadastrar.setDisable(false);
-            cadastrar.setOnAction(actionEvent -> System.out.println("Foi caralho"));
+            cadastrar.setOnAction(actionEvent ->
+                    formularioClienteIndividual(clienteEmpresarialPadrao));
 
-        }else if(newValue.equals("Cliente Empresarial")) {
+        }else if(cliente.defineTipo()==2) {
             limpaTela();
             limpaCampos();
-           // idCodigo.setDisable(false);
-           // idAnoLancamento.setDisable(false);
-           // idTitulo.setDisable(false);
+            idEmail.setVisible(true);
+            idSenha.setVisible(true);
+            idNome.setVisible(true);
+            idNomeFantasia.setVisible(true);
+            idCnpj.setVisible(true);
 
-           // idCodigo.setVisible(true);
-           // idAnoLancamento.setVisible(true);
-           // idTitulo.setVisible(true);
-           // idTempoDuracao.setVisible(true);
+            idEmail.setDisable(false);
+            idSenha.setDisable(false);
+            idNome.setDisable(false);
+            idNomeFantasia.setDisable(false);
+            idCnpj.setDisable(false);
+
             cadastrar.setDisable(false);
-            cadastrar.setOnAction(actionEvent -> System.out.println("Cliente Empresarial"));
+            cadastrar.setOnAction(actionEvent -> formularioClienteEmpresarial());
         }
     }
-            public void carregaCena(String endereco, ActionEvent event){
+
+    public void formularioClienteIndividual(ClienteEmpresarial clienteEmpresarial){
+        String email = validaString(idEmail);
+        String senha = validaString(idSenha);
+        String nome = validaString(idNome);
+        String cpf = validaCPF(idCpf);
+        ClienteEmpresarial empresa = clienteEmpresarial;
+
+        ClienteIndividual clienteIndividual = new ClienteIndividual(email,senha,nome,cpf,empresa);
+
+        if(validaCadastro(clienteIndividual) && !cpf.equals("")){
+            if(clientes.emailValido(email) && clientes.cpfValido(cpf)){
+                clientes.addClienteValido(clienteIndividual);
+                    limpaCampos();
+                    escreveMensagem(new Text("Cliente Individual cadastrado com sucesso." +
+                            "\n" + clienteIndividual.toString()));
+            }
+            else{
+                escreveMensagem(new Text("Email ou CPF já existente."));
+                escreveMensagem(new Text("Cliente não cadastrado."));
+                campoInvalido(idEmail);
+                campoInvalido(idCpf);
+                idEmail.clear();
+                idCpf.clear();
+            }
+        }else{
+                escreveMensagem(new Text("Cliente não cadastrado. Ao menos um campo inválido"));
+        }
+
+    }
+
+    public void formularioClienteEmpresarial(){
+        String email = validaString(idEmail);
+        String senha = validaString(idSenha);
+        String nome = validaString(idNome);
+        String cnpj = validaCNPJ(idCnpj);
+        String nomeFantasia = validaString(idNomeFantasia);
+        ClienteEmpresarial clienteEmpresarial = new ClienteEmpresarial(email,senha,nome,cnpj,nomeFantasia);
+
+        if(validaCadastro(clienteEmpresarial) && !cnpj.equals("")){
+            if(clientes.emailValido(email) && clientes.cnpjInvalido(cnpj)){
+                clientes.addClienteValido(clienteEmpresarial);
+                limpaCampos();
+                escreveMensagem(new Text("Cliente Empresarial cadastrado com sucesso." +
+                        "\n" + clienteEmpresarial.toString()));
+            }
+            else{
+                escreveMensagem(new Text("Email ou CNPJ já existente."));
+                escreveMensagem(new Text("Cliente Empresarial não cadastrado."));
+                campoInvalido(idEmail);
+                campoInvalido(idCnpj);
+                idEmail.clear();
+                idCnpj.clear();
+            }
+        }else{
+            escreveMensagem(new Text("Cliente Empresarial não cadastrado. Ao menos um campo inválido"));
+        }
+    }
+
+    public boolean validaCadastro(Cliente cliente){
+
+        if(cliente.getEmail().equals("") || cliente.getSenha().equals("") ||
+                cliente.getNome().equals("")) {
+            return false;
+        } else{
+            return true;
+        }
+    }
+
+    public void carregaCena(String endereco, ActionEvent event){
         try{
             root = FXMLLoader.load(Main.class.getResource(endereco));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -108,27 +224,34 @@ public class CadastroClienteController implements Initializable {
             stage.setScene(scene);
             stage.show();
         }catch(IOException e){
+            escreveMensagem(new Text("Cena não encontrada"));
         }
     }
 
     public String validaCPF(TextField textField){
-        if(textField.toString().length()==11 && validaInteiro(textField)!=-1){
-            return textField.toString();
+        if(textField.getText().length()==11 && validaLong(textField)!=-1){
+            return textField.getText();
+        }else {
+            campoInvalido(textField);
+            return "";
         }
-        return "";
     }
 
     public String validaCNPJ(TextField textField){
-        if(textField.toString().length()==14 && validaInteiro(textField)!=-1){
+        if(textField.getText().length()==14 && validaLong(textField)!=-1){
             return textField.toString();
+        }else{
+            campoInvalido(textField);
+            return "";
         }
-        return "";
+
     }
 
-    public int validaInteiro(TextField textField){
+    public long validaLong(TextField textField){
 
         try{
-            int aux = Integer.parseInt(textField.getText());
+            System.out.println(textField.getText());
+            long aux = Long.parseLong(textField.getText());
             textField.setStyle(null);
             return aux;
         }
@@ -137,10 +260,10 @@ public class CadastroClienteController implements Initializable {
             text.setText("O campo '" + textField.getId() + "' aceita apenas números.");
             escreveMensagem(text);
             campoInvalido(textField);
-
             return -1;
         }
     }
+
 
     public String validaString(TextField textfield){
         if(textfield.getText().equals("")){
@@ -164,6 +287,9 @@ public class CadastroClienteController implements Initializable {
         idSenha.setVisible(false);
         idNome.setVisible(false);
         idCpf.setVisible(false);
+        idCnpj.setVisible(false);
+        idNomeFantasia.setVisible(false);
+        empresaChoiceBox.setVisible(false);
         cadastrar.setDisable(true);
     }
 
@@ -176,10 +302,15 @@ public class CadastroClienteController implements Initializable {
         idNome.setStyle(null);
         idCpf.clear();
         idCpf.setStyle(null);
+        idCnpj.clear();
+        idCnpj.setStyle(null);
+        idNomeFantasia.clear();
+        idNomeFantasia.setStyle(null);
     }
 
     public void escreveMensagem(Text mensagem){
         textArea.appendText(mensagem.getText() + "\n");
     }
+
 }
 

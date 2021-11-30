@@ -40,7 +40,7 @@ public class ClienteEmpresarial extends Cliente{
 
     @Override
     public String toString() {
-        return "2" +
+        return  "2" +
                 ";" + getNome() + ";" +
                 getEmail() + ";" +
                 getSenha() + ";" +
